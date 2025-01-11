@@ -1,0 +1,46 @@
+titulo,autor,formato,editorial,anio,idioma,numpags,encuad,isbn,categor,precio,portada,stock
+
+"titulo":    "Titulo",
+    "autor":     "Autor1",
+    "formato":   "Digital",
+    "editorial": "Editorial1",
+    "anio":       "Año1",
+    "idioma":    "Idioma1",
+    "numpags":   "Muchas1",
+    "encuad":    "No Aplica",
+    "isbn":      "69420",
+    "categor":   "Fantasía",
+    "precio":    "42069",
+    "portada":   "./src/img/portadas/img99.png",
+    "stock":     "99"
+
+ id_L | Titulo_L  | Autor_L | Formato_L | Editorial_L | Año_L | Idioma_L | NumPag_L | Encudernacion_L | ISBN_L        | Categoria_L | Precio_L | Portada_L                    | Stock_L |
+
+{
+    "Titulo_L":    "Titulo",
+    "Autor_L":     "Autor1",
+    "Formato_L":   "Digital",
+    "Editorial_L": "Editorial1",
+    "Año_L":       "1990",
+    "Idioma_L":    "Idioma1",
+    "NumPag_L":   "420",
+    "Encudernacion_L":    "No Aplica",
+    "ISBN_L":      "69420",
+    "Categoria_L":   "Fantasía",
+    "Precio_L":    "42069",
+    "Portada_L":   "./src/img/portadas/img99.png",
+    "Stock_L":     "99"
+}
+
+	Titulo_L VARCHAR(50),
+    Autor_L VARCHAR(50),
+    Formato_L VARCHAR(7) NOT NULL,
+    Editorial_L VARCHAR(50),
+    Año_L SMALLINT,
+    Idioma_L VARCHAR(50),
+    NumPag_L INT,
+    Encudernacion_L VARCHAR(11) NOT NULL,
+    ISBN_L VARCHAR(13),
+    Categoria_L VARCHAR(16) NOT NULL,
+    Precio_L SMALLINT,
+    Portada_L VARCHAR(50),

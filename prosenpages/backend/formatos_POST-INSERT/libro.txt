@@ -1,0 +1,17 @@
+
+ id, Titulo, Autor, Formato, Editorial, Año, Idioma, NumPag, Encudernacion, ISBN, Categoria, Precio, Portada, Stock
+{
+    "Titulo":    "Titulo3",
+    "Autor":     "Autor1",
+    "Formato":   "Digital",
+    "Editorial": "Editorial1",
+    "Año":       "1990",
+    "Idioma":    "Idioma1",
+    "NumPag":   "420",
+    "Encudernacion":    "No Aplica",
+    "ISBN":      "69420",
+    "Categoria":   "Fantasía",
+    "Precio":    "2069",
+    "Portada":   "./src/img/portadas/img99.png",
+    "Stock":     "99"
+}

@@ -1,0 +1,22 @@
+CREATE TABLE Compras (
+	Id int auto_increment primary key,
+    numCompra var,
+    fecha TIMESTAMP default now(),--
+    usuario int,-- Usuario
+    libro int,-- Libro
+    direccion int,-- Direccion
+	tarjeta int-- Tarjeta
+);
+
+Id, numCompra, fecha, usuario, libro, direccion, tarjeta
+
+//Get
+{
+    "ID": 
+    "Numero de compra": 
+    "Fecha": 
+    "Usuario":
+    "Libro":
+    "Direccion"
+    "Tarjeta"
+}

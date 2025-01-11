@@ -1,0 +1,383 @@
+/*
+.superRefine(({ Categoria }, checaCategoria) => {
+    console.log("Mostrando Categoria:" + Categoria);
+    //const Categoria = ["Tapa blanda", "Tapa Dura", "No Aplica"];
+    const contieneFant = (ch) => /Fantasía/.test(ch);
+    const contieneCienF = (ch) => /Ciencia Ficción/.test(ch);
+    const contieneRom = (ch) => /Romance/.test(ch);
+    const contieneSusp = (ch) => /Suspenso/.test(ch);
+    const contienePoes = (ch) => /Poesía/.test(ch);
+    const contieneInfa = (ch) => /Infantiles/.test(ch);
+    let countOfFant = 0,
+        countOfCienF = 0,
+        countOfRom = 0,
+        countOfSusp = 0,
+        countOfPoes = 0,
+        countOfInfa = 0;
+    
+    //includes("Fantasía",{code: "",message: "'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'"}).
+
+    let ch = Categoria;
+    if (contieneFant(ch)) {
+        console.log("Contando Fant:");
+        countOfFant++;
+        console.log(countOfFant);
+    }
+    else if (contieneCienF(ch)) {
+        console.log("Contando CienF:");
+        countOfCienF++;
+        console.log(countOfCienF);
+    }
+    else if (contieneRom(ch)) {
+        console.log("Contando Rom:");
+        countOfRom++;
+        console.log(countOfRom);
+    }
+
+    else if (contieneSusp(ch)) {
+        console.log("Contando Susp:");
+        countOfSusp++;
+        console.log(countOfSusp);
+    }
+    else if (contienePoes(ch)) {
+        console.log("Contando Poes:");
+        countOfPoes++;
+        console.log(countOfPoes);
+    }
+    else if (contieneInfa(ch)) {
+        console.log("Contando Infa:");
+        countOfInfa++;
+        console.log(countOfInfa);
+    }
+    //}
+    if (
+        countOfFant == 1 ||
+        countOfCienF == 1 ||
+        countOfRom == 1 ||
+        countOfSusp == 1 ||
+        countOfPoes == 1 ||
+        countOfInfa == 1
+    ) {
+        console.log("Categoria con parametros correctos!");
+
+    }
+    else {
+        checaCategoria.addIssue({
+            code: 420,
+            message: "Debe ser'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'",
+            countOfFant,
+            countOfCienF,
+            countOfRom,
+            countOfSusp,
+            countOfPoes,
+            countOfInfa
+        });
+    }
+});
+//-------------------------------------
+.superRefine(({ Contraseña }, checkPassComplexity) => {
+    console.log("Mostrando Contraseña:" + Contraseña);
+    const containsUppercase = (ch) => /[A-Z]/.test(ch);
+    const containsLowercase = (ch) => /[a-z]/.test(ch);
+    const containsSpecialChar = (ch) => /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/.test(ch);
+    let countOfUpperCase = 0,
+        countOfLowerCase = 0,
+        countOfNumbers = 0,
+        countOfSpecialChar = 0;
+    for (let i = 0; i < Contraseña.length; i++) {
+        let ch = Contraseña.charAt(i);
+        if (!isNaN(+ch)) {
+            console.log("Contando números:" + countOfNumbers);
+            countOfNumbers++;
+        }
+        else if (containsUppercase(ch)) {
+            console.log("Contando mayusculas" + countOfUpperCase);
+            countOfUpperCase++;
+        }
+        else if (containsLowercase(ch)) {
+            console.log("Contando minusculas" + countOfLowerCase);
+            countOfLowerCase++;
+        }
+        else if (containsSpecialChar(ch)) {
+            console.log("Contando caracteres" + countOfSpecialChar);
+            countOfSpecialChar++;
+        }
+    }
+    if (
+        countOfLowerCase < 1 ||
+        countOfUpperCase < 2 ||
+        countOfSpecialChar < 2 ||
+        countOfNumbers < 2
+    ) {
+        checkPassComplexity.addIssue({
+            code: 420,
+            message: "Contraseña no cumple los parámetros requeridos! 2 mayusculas, 2 caracteres especiales, 2 numeros",
+            Parametros: "2 mayusculas, 2 caracteres especiales, 2 numeros",
+            countOfNumbers,
+            countOfUpperCase,
+            countOfLowerCase,
+            countOfSpecialChar
+        });
+    }
+    //console.log("Contraseña con parametros correctos!")
+});
+*/
+//--------------------------------------------------------------------
+/*
+.
+superRefine(({ Encudernacion }, checaEncudernacion) => {
+    console.log("Mostrando Encudernacion:" + Encudernacion);
+    //const Encudernacion = ["Tapa blanda", "Tapa Dura", "No Aplica"];
+    const contieneBlanda = (ch) => /Tapa blanda/.test(ch);
+    const contieneDura = (ch) => /Tapa dura/.test(ch);
+    const contieneNoAplica = (ch) => /No aplica/.test(ch);
+    let countOfBlanda = 0,
+        countOfDura = 0,
+        countOfNoAplica = 0;
+    //for (let i = 0; i < Encudernacion.length; i++) {
+
+    let ch = Encudernacion;
+    if (contieneBlanda(ch)) {
+        console.log("Contando blanda:");
+        countOfBlanda++;
+        console.log(countOfBlanda);
+    }
+    else if (contieneDura(ch)) {
+        console.log("Contando dura:");
+        countOfDura++;
+        console.log(countOfDura);
+    }
+    else if (contieneNoAplica(ch)) {
+        console.log("Contando no aplica:");
+        countOfNoAplica++;
+        console.log(countOfNoAplica);
+    }
+    //}
+    if (
+        countOfBlanda == 1 ||
+        countOfDura == 1 ||
+        countOfNoAplica == 1
+    ) {
+        console.log("Encudernacion con parametros correctos!");
+
+    }
+    else {
+        checaEncudernacion.addIssue({
+            code: 420,
+            message: "Debe ser: 'Tapa blanda', 'Tapa dura', 'No aplica'",
+            Parametros: "2 mayusculas, 2 caracteres especiales, 2 numeros",
+            countOfBlanda,
+            countOfDura,
+            countOfNoAplica
+        });
+    }
+}).
+superRefine(({ Categoria }, checaCategoria) => {
+    console.log("Mostrando Categoria:" + Categoria);
+    //const Categoria = ["Tapa blanda", "Tapa Dura", "No Aplica"];
+    const contieneFant = (ch) => /Fantasía/.test(ch);
+    const contieneCienF = (ch) => /Ciencia Ficción/.test(ch);
+    const contieneRom = (ch) => /Romance/.test(ch);
+    const contieneSusp = (ch) => /Suspenso/.test(ch);
+    const contienePoes = (ch) => /Poesía/.test(ch);
+    const contieneInfa = (ch) => /Infantiles/.test(ch);
+    let countOfFant = 0,
+        countOfCienF = 0,
+        countOfRom = 0,
+        countOfSusp = 0,
+        countOfPoes = 0,
+        countOfInfa = 0;
+    
+    //includes("Fantasía",{code: "",message: "'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'"}).
+    
+    let ch = Categoria;
+    if (contieneFant(ch)) {
+        console.log("Contando Fant:");
+        countOfFant++;
+        console.log(countOfFant);
+    }
+    else if (contieneCienF(ch)) {
+        console.log("Contando CienF:");
+        countOfCienF++;
+        console.log(countOfCienF);
+    }
+    else if (contieneRom(ch)) {
+        console.log("Contando Rom:");
+        countOfRom++;
+        console.log(countOfRom);
+    }
+
+    else if (contieneSusp(ch)) {
+        console.log("Contando Susp:");
+        countOfSusp++;
+        console.log(countOfSusp);
+    }
+    else if (contienePoes(ch)) {
+        console.log("Contando Poes:");
+        countOfPoes++;
+        console.log(countOfPoes);
+    }
+    else if (contieneInfa(ch)) {
+        console.log("Contando Infa:");
+        countOfInfa++;
+        console.log(countOfInfa);
+    }
+    //}
+    if (
+        countOfFant == 1 ||
+        countOfCienF == 1 ||
+        countOfRom == 1 ||
+        countOfSusp == 1 ||
+        countOfPoes == 1 ||
+        countOfInfa == 1
+    ) {
+        console.log("Categoria con parametros correctos!");
+
+    }
+    else {
+        checaCategoria.addIssue({
+            code: 420,
+            message: "Debe ser'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'",
+            countOfFant,
+            countOfCienF,
+            countOfRom,
+            countOfSusp,
+            countOfPoes,
+            countOfInfa
+        });
+    }
+})
+*/
+//+++++++++++++++++++++++++++++++++++++++++++++++++
+.
+superRefine(({ Encudernacion, Categoria }, checaForm) => {
+    console.log("Mostrando Encudernacion:" + Encudernacion);
+    //const Encudernacion = ["Tapa blanda", "Tapa Dura", "No Aplica"];
+    const contieneBlanda = (ch) => /Tapa blanda/.test(ch);
+    const contieneDura = (ch) => /Tapa dura/.test(ch);
+    const contieneNoAplica = (ch) => /No aplica/.test(ch);
+    let countOfBlanda = 0,
+        countOfDura = 0,
+        countOfNoAplica = 0;
+
+    const contieneFant = (ch1) => /Fantasía/.test(ch1);
+    const contieneCienF = (ch1) => /Ciencia Ficción/.test(ch1);
+    const contieneRom = (ch1) => /Romance/.test(ch1);
+    const contieneSusp = (ch1) => /Suspenso/.test(ch1);
+    const contienePoes = (ch1) => /Poesía/.test(ch1);
+    const contieneInfa = (ch1) => /Infantiles/.test(ch1);
+    let countOfFant = 0,
+        countOfCienF = 0,
+        countOfRom = 0,
+        countOfSusp = 0,
+        countOfPoes = 0,
+        countOfInfa = 0;
+
+    let ch = Encudernacion;
+    let ch1 = Categoria;
+
+    if (contieneBlanda(ch)) {
+        console.log("Contando blanda:");
+        countOfBlanda++;
+        console.log(countOfBlanda);
+    }
+    else if (contieneDura(ch)) {
+        console.log("Contando dura:");
+        countOfDura++;
+        console.log(countOfDura);
+    }
+    else if (contieneNoAplica(ch)) {
+        console.log("Contando no aplica:");
+        countOfNoAplica++;
+        console.log(countOfNoAplica);
+    }
+    //}
+    if (
+        countOfBlanda == 1 ||
+        countOfDura == 1 ||
+        countOfNoAplica == 1
+    ) {
+        console.log("Encudernacion con parametros correctos!");
+
+    }
+    else {
+        checaForm.addIssue({
+            code: 420,
+            message: "Debe ser: 'Tapa blanda', 'Tapa dura', 'No aplica'",
+            Parametros: "2 mayusculas, 2 caracteres especiales, 2 numeros",
+            countOfBlanda,
+            countOfDura,
+            countOfNoAplica
+        });
+    }
+
+
+
+    if (contieneFant(ch1)) {
+        console.log("Contando Fant:");
+        countOfFant++;
+        console.log(countOfFant);
+    }
+    else if (contieneCienF(ch1)) {
+        console.log("Contando CienF:");
+        countOfCienF++;
+        console.log(countOfCienF);
+    }
+    else if (contieneRom(ch1)) {
+        console.log("Contando Rom:");
+        countOfRom++;
+        console.log(countOfRom);
+    }
+
+    else if (contieneSusp(ch1)) {
+        console.log("Contando Susp:");
+        countOfSusp++;
+        console.log(countOfSusp);
+    }
+    else if (contienePoes(ch1)) {
+        console.log("Contando Poes:");
+        countOfPoes++;
+        console.log(countOfPoes);
+    }
+    else if (contieneInfa(ch1)) {
+        console.log("Contando Infa:");
+        countOfInfa++;
+        console.log(countOfInfa);
+    }
+    
+    if (
+        countOfFant == 1 ||
+        countOfCienF == 1 ||
+        countOfRom == 1 ||
+        countOfSusp == 1 ||
+        countOfPoes == 1 ||
+        countOfInfa == 1
+    ) {
+        console.log("Categoria con parametros correctos!");
+
+    }
+    else {
+        checaCategoria.addIssue({
+            code: 420,
+            message: "Debe ser'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'",
+            countOfFant,
+            countOfCienF,
+            countOfRom,
+            countOfSusp,
+            countOfPoes,
+            countOfInfa
+        });
+    }
+})
+    .
+    superRefine(({ Categoria }, checaCategoria) => {
+        console.log("Mostrando Categoria:" + Categoria);
+        //const Categoria = ["Tapa blanda", "Tapa Dura", "No Aplica"];
+
+        /*.
+        includes("Fantasía",{code: "",
+            message: "'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'"}).
+        */
+        
+        
+    });

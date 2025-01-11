@@ -1,0 +1,8 @@
+{
+    "Nombre": "Nombre1",
+    "Apellido": "Apelldo1",
+    "Nacim": "2008-7-04",
+    "Email": "correo1@test1.com",
+    "Contraseña": "pass1"
+}
+Nombre, Apellido, Nacim, Email, Contraseña

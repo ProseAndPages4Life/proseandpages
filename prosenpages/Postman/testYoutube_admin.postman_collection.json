@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "776ce1e9-c8ce-43e4-ac36-387c9e36057f",
+		"name": "testYoutube_admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40620629"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4999/admin/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\": \"Titulo1Postman\",\r\n    \"Autor\": \"Autor1\",\r\n    \"Formato\": \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\": \"1990\",\r\n    \"Idioma\": \"Idioma1\",\r\n    \"NumPag\": \"420\",\r\n    \"Encudernacion\": \"No aplica\",\r\n    \"ISBN\": \"1234567890123\",\r\n    \"Categoria\": \"Fantasía\",\r\n    \"Precio\": \"2069\",\r\n    \"Portada\": \"./src/img/portadas/img99.png\",\r\n    \"Stock\": \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/books/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\": \"TituloPostman69420\",\r\n    \"Autor\": \"Autor1\",\r\n    \"Formato\": \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\": \"1990\",\r\n    \"Idioma\": \"Idioma1\",\r\n    \"NumPag\": \"420\",\r\n    \"Encudernacion\": \"No aplica\",\r\n    \"ISBN\": \"1234567890123\",\r\n    \"Categoria\": \"Romance\",\r\n    \"Precio\": \"2069\",\r\n    \"Portada\": \"./src/img/portadas/img99.png\",\r\n    \"Stock\": \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/books/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Nombre1\",\r\n    \"Apellido\": \"Apelldo1\",\r\n    \"Nacim\": \"2009-07-04\",\r\n    \"Email\": \"admin1@test1.com\",\r\n    \"Contraseña\": \"pass1\",\r\n    \"Tipo\": \"Administraador\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Nombre1\",\r\n    \"Apellido\": \"Apelldo1\",\r\n    \"Nacim\": \"2009-07-04\",\r\n    \"Email\": \"admin1@test1.com\",\r\n    \"Contraseña\": \"pass1\",\r\n    \"Tipo\": \"Administraador\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Tipo\": \"Administrador\",\r\n    \"Nombre\": \"Nombre11\",\r\n    \"Apellido\": \"Apelldo11\",\r\n    \"Nacim\": \"2019-07-04\",\r\n    \"login\": null,\r\n    \"direccion1\": null,\r\n    \"direccion2\": null,\r\n    \"tarjeta1\": null,\r\n    \"tarjeta2\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users/pass/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users/pass/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users",
+						"pass",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users/email/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Tipo\": \"Cliente\",\r\n    \"Nombre\": \"Nombre11\",\r\n    \"Apellido\": \"Apelldo11\",\r\n    \"Nacim\": \"2019-07-04\",\r\n    \"login\": null,\r\n    \"direccion1\": null,\r\n    \"direccion2\": null,\r\n    \"tarjeta1\": null,\r\n    \"tarjeta2\": null,\r\n    \"Email\": \"admin1@test1.com\",\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/users/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/register YYYY-MM-DD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Nombre1\",\r\n    \"Apellido\": \"Apelldo1\",\r\n    \"Nacim\": \"2009-07-04\",\r\n    \"Email\": \"admin21@test1.com\",\r\n    \"Contraseña\": \"pass1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/register ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"register "
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"admin1@test1.com\",\r\n    \"Contraseña\": \"PaSS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/admin/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"cliente1@test1.com\",\r\n    \"Contraseña\": \"pass1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

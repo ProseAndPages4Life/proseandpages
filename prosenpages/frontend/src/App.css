@@ -1,0 +1,233 @@
+/*
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+*/
+.App {
+  text-align: center;
+}
+
+body {
+  padding: 0%;
+  margin: 0%;
+  font-family: "Open Sans", sans-serif;
+}
+
+nav {
+  /*list-style: none;*/
+  
+  margin: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgb(69, 62, 249);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+ /* The navigation bar */
+ .mainNav {
+  overflow: hidden;
+  background-color: rgb(69, 62, 249);
+  position: fixed; /* Set the mainNav to fixed position */
+  top: 0; /* Position the mainNav at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the mainNav */
+.mainNav navBar {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.mainNav navBar:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Main content */
+.mainBody {
+  margin-top: 40px; /* Add a top margin to avoid content overlay */
+} 
+
+
+a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 25px;
+}
+/*
+.formita{
+  classsname=?
+  w-full bg-zinc-700 text-white px-4 py-2 rounded-md;
+}
+*/
+.text{
+  color: crimson;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid rgb(69, 62, 249);
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: rgb(69, 62, 249);
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid rgb(69, 62, 249);
+  background: rgb(69, 62, 249);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.libros {
+  
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.7%;
+}
+
+.form { /* Add a top margin to avoid content overlay */
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4%;
+}
+
+.botonRegreso{
+  color: red;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  background-color: rgb(69, 62, 249);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.botonRegistro{
+  color: rgb(0, 255, 26);
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  background-color: rgb(69, 62, 249);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+input{
+  font-size:16px;
+  width: 100%;
+--tw-bg-opacity: 1;
+background-color: rgb(109 105 249 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
+--tw-text-opacity: 2;
+color: rgb(0 0 0 / var(--tw-text-opacity, 1)) /* #ffffff */;
+padding-left: 1rem /* 16px */;
+padding-right: 1rem /* 16px */;
+padding-top: 0.5rem /* 8px */;
+padding-bottom: 0.5rem /* 8px */;
+border-radius: 0.375rem /* 6px */;
+}
+
+.librosNav {
+  width: 70%;
+  height: 80px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.librosNav a {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(69, 62, 249);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.librosNav a {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(69, 62, 249);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.listOfLibros {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.librosList {
+  columns: 3 auto;
+  display: inline-block;
+}
+
+.libroDisplay {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(233, 233, 233);
+  cursor: pointer;
+}
+* {
+  padding-top: 0;
+  margin-top: 0;
+}

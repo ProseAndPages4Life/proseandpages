@@ -1,0 +1,34 @@
+SELECT * FROM alumnos a INNER JOIN cursos c ON a.idCurso = c.idCurso; 
+
+SELECT * FROM alumnos a INNER JOIN cursos c ON a.idCurso = c.idCurso;
+
+
+SELECT numCompra AS 'Compra',fecha AS 'Fecha',Titulo AS 'Titulo',Nombre as 'Cliente',Calle,Numero AS 'Numero',Num AS 'Tarjeta' FROM 	Compras comp 
+	INNER JOIN Usuarios user ON comp.usuario = user.id
+	INNER JOIN Libros book ON comp.libro = book.id
+	INNER JOIN Direccion addr ON comp.direccion = addr.Id
+	INNER JOIN Tarjeta card ON comp.tarjeta = card.id
+	WHERE user.id=3
+	GROUP BY Compra,Fecha,Titulo,Cliente,Calle,Numero,Tarjeta;
+
+SELECT numCompra AS 'Compra',fecha AS 'Fecha',Titulo AS 'Titulo',Cantidad AS 'Cantidad',Nombre as 'Cliente',Calle,Numero AS 'Numero',Num AS 'Tarjeta' FROM 	Compras comp 
+	INNER JOIN Usuarios user ON comp.usuario = user.id
+	INNER JOIN Libros book ON comp.libro = book.id
+	INNER JOIN Direccion addr ON comp.direccion = addr.Id
+	INNER JOIN Tarjeta card ON comp.tarjeta = card.id
+	WHERE user.id='3' AND comp.id='4';
+	
+
+SELECT  FROM Carrito WHERE (usuario=?)
+
+
+var cadena = "abcdefghij";
+
+console.log("(1,2): " + cadena.substr(-4, 4)); // '(1, 2): bc'
+
+
+SELECT Tipo,Nombre,Titulo,tarjeta FROM Usuarios user 
+
+INNER JOIN Compras comp ON  user.id  = comp.usuario
+
+INNER JOIN Compras comp ON  user.id  = comp.usuario;
