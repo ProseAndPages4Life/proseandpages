@@ -95,7 +95,6 @@ function BookForm() {
                     <div className="libros">
                         <a>
                             <button type="submit" className="botonRegistro"><h2>Registrar!</h2></button>
-                            <button type="submit" className="botonRegistro"><h2>Registrar!</h2></button>
                         </a>
                     </div>
                 </div>
