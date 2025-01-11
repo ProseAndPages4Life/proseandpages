@@ -6,16 +6,27 @@ import indexRoutes from './routes/index_routes.js';//Indice de rutas
 import adminRoutes from './routes/admin_routes.js';
 import clientRoutes from './routes/client_routes.js';
 import invRoutes from './routes/inv_routes.js';
+
+import { portFront, siteFront  } from "./config.js";
 //import in
 
 //Creando aplicacion de express
-const app = express();
+export const app = express();
 
+export const origenFront = "/"+siteFront +":"+portFront+"/";
+
+var corsOptions = {
+    origin: /localhost:5173//*,
+    origin: 'http://localhost:5173'/*,
+    optionsSuccessStatus: 200 */
+}
 //Para autorizar dominio para peticiones
 app.use(cors(
-    
-    
-    //{ origin: "http://localhost:5173/" }
+    corsOptions
+    //{ origin: 'http://localhost:5173/' }
+    //{ origin: ["http://example1.com", /\.example2\.com$/] }
+    //{ origin: /^http:\/\/localhost\/$/ }
+    //{ origin: [/http://localhost$/] }
     ));
 //Morgan para saber que peticiones se hacen
 app.use(morgan('dev'));
@@ -29,6 +40,3 @@ app.use("/admin", adminRoutes);//Admin
 app.use("/inv", invRoutes);
 app.use("/dev", indexRoutes);//Desarrollo
 //app.use("/admin" , adminloginRoutes);
-
-
-export default app;
