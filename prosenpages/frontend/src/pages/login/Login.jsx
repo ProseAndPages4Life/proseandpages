@@ -41,8 +41,8 @@ function Login() {
         <div className="libros">
           <div className="libros">
             <a>
-              <button type="submit">Entra!</button>
-              <text type="submit" className="botonRegistro">Entrar!</text>
+              <button type="submit" className="botonRegistro"><h2>Entra!</h2></button>
+              
             </a>
           </div>
         </div>

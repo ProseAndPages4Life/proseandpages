@@ -33,7 +33,7 @@ function CardForm() {
                 <div className="libros">
                     <div className="libros">
                         <a>
-                        <text type="submit" className="botonRegistro">Registrar!</text>
+                        <button type="submit" className="botonRegistro"><h2>Registrar!</h2></button>
                         </a>
                     </div>
                 </div>

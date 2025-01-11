@@ -35,18 +35,18 @@ function App() {
     <AuthProvider>
     <Router>
       <nav className="mainNav">
-        <Link to="/" classname="navBar"> Home </Link>
-        <Link to="profile" classname="navBar"> Profile</Link>
-        <Link to="register" classname="navBar"> Register </Link>
-        <Link to="login" classname="navBar"> Login </Link>
-        <Link to="/admin/books" classname="navBar"> Libros_Admin </Link>
-        <Link to="/admin/users" classname="navBar"> Usuarios_Admin </Link>
-        <Link to="/admin/edit" classname="navBar"> Editar_Admin </Link>
-        <Link to="/admin/create" classname="navBar"> Crear_Admin </Link>
-        <Link to="/carrito" classname="navBar"> Carrito </Link>
-        <Link to="logout" classname="navBar"> Logout </Link>
+        <Link to="/" className="navBar"> Home </Link>
+        <Link to="profile" className="navBar"> Profile</Link>
+        <Link to="register" className="navBar"> Register </Link>
+        <Link to="login" className="navBar"> Login </Link>
+        <Link to="/admin/books" className="navBar"> Libros_Admin </Link>
+        <Link to="/admin/users" className="navBar"> Usuarios_Admin </Link>
+        <Link to="/admin/edit" className="navBar"> Editar_Admin </Link>
+        <Link to="/admin/create" className="navBar"> Crear_Admin </Link>
+        <Link to="/carrito" className="navBar"> Carrito </Link>
+        <Link to="logout" className="navBar"> Logout </Link>
       </nav>
-      <div class="mainBody">
+      <div className="mainBody">
         <Routes>
           <Route path="admin" element={<Home />} />
           <Route path="admin">
@@ -272,7 +272,7 @@ function App() {
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
+        </h2></button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>

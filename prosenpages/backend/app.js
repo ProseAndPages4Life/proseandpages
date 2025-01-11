@@ -16,9 +16,12 @@ export const app = express();
 export const origenFront = "/"+siteFront +":"+portFront+"/";
 
 var corsOptions = {
-    origin: /localhost:5173//*,
-    origin: 'http://localhost:5173'/*,
-    optionsSuccessStatus: 200 */
+    origin: /localhost:5173/
+    //,"methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
+    //,"methods": "GET,PUT,POST,DELETE"
+    //,methods: "GET , DELETE"
+    //,optionsSuccessStatus: 200 
+    //origin: 'http://localhost:5173',
 }
 //Para autorizar dominio para peticiones
 app.use(cors(
