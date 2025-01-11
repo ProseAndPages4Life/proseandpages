@@ -3,13 +3,13 @@
 
    <picture>
   <source
-    srcset="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&show_icons=true&theme=dark&locale=es&theme=merko"
-    media="(prefers-color-scheme: dark)"
+    srcset="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&theme=merko&show_icons=true&theme=dark&locale=es"
+    
   />
   <source
-    srcset="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&show_icons=true&locale=es&theme=merko"
-    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+    srcset="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&theme=merko&show_icons=true&locale=es"
+    
   />
-  <img src="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&show_icons=true&locale=es&theme=merko" />
+  <img src="https://github-readme-stats.vercel.app/api?username=ProseAndPages4Life&theme=merko&show_icons=true&locale=es" />
 </picture>
 </p>
