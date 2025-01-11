@@ -26,7 +26,7 @@ function BookForm() {
 
 
                 <input type="radio" id="Físico" name="Formato" value="Físico" {...register("Formato", { required: true })} />
-                <label htmlFor="Físico" for="Físico">Físico</label>
+                <label htmlFor="Físico">Físico</label>
                 <input type="radio" id="Digital" name="Formato" value="Digital" {...register("Formato", { required: true })} />
                 <label htmlFor="Digital">Digital</label><br />
 

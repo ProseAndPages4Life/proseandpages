@@ -83,11 +83,11 @@ export function UserFormAdmin() {
 
 
                 <input type="radio"  id="Cliente1" name="Tipo" value="Cliente" {...register("Cliente", { required: true })} /><br />
-                <label htmlFor="Tipo" for="Cliente1">Cliente</label><br />
+                <label htmlFor="Tipo" htmlFor="Cliente1">Cliente</label><br />
                 <input type="radio"  id="Inventario1" name="Tipo" value="Inventario"{...register("Inventario", { required: true })} /><br />
-                <label htmlFor="Tipo" for="Inventario1">Inventario</label><br />
+                <label htmlFor="Tipo" htmlFor="Inventario1">Inventario</label><br />
                 <input type="radio"  id="Administrador1" name="Tipo" value="Administrador" {...register("Admninstador", { required: true })} /><br />
-                <label htmlFor="Tipo" for="Administrador1">Administrador</label><br />
+                <label htmlFor="Tipo" htmlFor="Administrador1">Administrador</label><br />
                 */}
 
                 <div className="libros">
