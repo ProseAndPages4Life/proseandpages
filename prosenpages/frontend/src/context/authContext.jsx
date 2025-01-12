@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { loginAdminReq, regisClientReq } from "../api/auth";
 
 
@@ -63,40 +63,50 @@ export const AuthProvider = ({ children }) => {
         //export const regisClientReq = user => axios.post(`${ipBack}/register`, user);
         try {
             const res = await regisClientReq(user);
-            console.log("Imprimiendo respuesta!")
-            console.log(res)
-            console.log("Ya se registro! Cambiando estado de registro a true")
+            console.log("Imprimiendo respuesta!");
+            console.log(res);
+            console.log("Ya se registro! Cambiando estado de registro a true");
             setIsRegistrado(true);
         } catch (error) {
-            console.log("Viendo error!")
-            console.log(error)
-            
-            console.log("error.response")
-            console.log(error.response)
-            console.log("error.response.data")
-            console.log(error.response.data)
-            console.log("error.response.data.message")
-            console.log(error.response.data.message)
-            
+            console.log("Viendo error!");
+            console.log(error);
+
+            console.log("error.response");
+            console.log(error.response);
+            console.log("error.response.data");
+            console.log(error.response.data);
+            console.log("error.response.data.message");
+            console.log(error.response.data.message);
+
             if (Array.isArray(error.response.data)) {
-                
-                console.log("Es array")
-                console.log("Creo que solo hubo un error")
-                
+
+                console.log("Es array");
+                console.log("Creo que solo hubo un error");
+
                 setErrors(error.response.data);
             } else {
-                
+
                 console.log("No es array");
                 console.log("Es objeto al parecer");
                 console.log("Seguro viene del backend");
                 console.log("error.response.data.Error");
                 console.log(error.response.data.Error);
-                
+
                 setErrors(error.response.data.Error);
             }
         }
 
     };
+
+    useEffect(() => {
+        if (errorsBack.length > 0) {
+            const timer = setTimeout(() => {
+                setErrors([]);
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }
+    );
 
     return (
         <AuthContext.Provider value={{

@@ -10,7 +10,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
 
@@ -20,24 +20,25 @@ function Register() {
 
     const { regisClient, errorsBack, isRegistrado,
         // isAutenticado
-        } = useAuth();
+    } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isRegistrado) navigate("/login");
-      }, [isRegistrado]);
+    }, [isRegistrado]);
 
 
     const onSubmit = handleSubmit(async (datos) => {
-        console.log("Leyendo datos ingresados en la consola!")
-        console.log(datos)
-        console.log("Pasando datos al register")
-        regisClient(datos)
+        console.log("Leyendo datos ingresados en la consola!");
+        console.log(datos);
+        console.log("Pasando datos al register");
+        regisClient(datos);
     }
     );
 
     return (
         <div className="form">
+            <div className="text"><h1>Registro!</h1></div>
             {
                 errorsBack.map((error, i) => (
                     <div className="text" key={error}>
@@ -84,9 +85,12 @@ function Register() {
                 }
                 <div className="libros">
                     <div className="libros">
-                        <a>
-                            <button type="submit" className="botonRegistro"><h2>Registrar!</h2></button>
-                        </a>
+
+                        <button type="submit" className="botonRegistro"><h2>Registrar!</h2></button>
+                        <p className="text" > <br /><br />
+                            Ya tienes cuenta?<br />
+                            <Link className="botonRegistro" to="/login"> Ingresa</Link>
+                        </p>
                     </div>
                 </div>
             </form>

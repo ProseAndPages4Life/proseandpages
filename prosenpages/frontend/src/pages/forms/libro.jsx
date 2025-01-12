@@ -4,7 +4,9 @@ import { createBookReq } from "../../api/auth";
 
 function BookForm() {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: {
+        errors
+    } } = useForm();
 
 
     const onSubmit = handleSubmit(async (values) => {
