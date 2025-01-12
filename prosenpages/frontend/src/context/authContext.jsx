@@ -35,8 +35,20 @@ export const AuthProvider = ({ children }) => {
             console.log(error.response.data)
             console.log("error.response.data.message")
             console.log(error.response.data.message)
-
-            setErrors(error.response.data)
+            if(Array.isArray(error.response.data)){
+                console.log("Es array")
+                console.log("Creo que solo hubo un error")
+                setErrors(error.response.data)
+            }else{
+                console.log("No es array")
+                console.log("Es objeto al parecer")
+                console.log("error.response.data.message")
+            console.log(error.response.data.message)
+            console.log("error.response.data.Error")
+            console.log(error.response.data.Error)
+            setErrors(error.response.data.Error)
+            }
+            
             
         }
     };
