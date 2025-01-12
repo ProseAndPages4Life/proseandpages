@@ -15,7 +15,9 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [isAutenticado, setIsAutenticado] = useState(false);
+    const [isAutenAdmin, setIsAutenAdmin] = useState(false);
+    const [isAutenClient, setIsAutenClient] = useState(false);
+    const [isAutenInv, setIsAutenInv] = useState(false);
     const [isRegistrado, setIsRegistrado] = useState(false);
     const [errorsBack, setErrors] = useState([]);
 
@@ -27,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             const res = await loginAdminReq(user);
             console.log(res.data);
             setUser(res.data);
-            setIsAutenticado(true);
+            setIsAutenAdmin(true);
         } catch (error) {
             /*
             console.log("error:")
@@ -67,7 +69,7 @@ export const AuthProvider = ({ children }) => {
             const res = await loginClientReq(user);
             console.log(res.data);
             setUser(res.data);
-            setIsAutenticado(true);
+            setIsAutenClient(true);
         } catch (error) {
 
             if (Array.isArray(error.response.data)) {
@@ -87,7 +89,7 @@ export const AuthProvider = ({ children }) => {
             const res = await loginInvReq(user);
             console.log(res.data);
             setUser(res.data);
-            setIsAutenticado(true);
+            setIsAutenInv(true);
         } catch (error) {
             if (Array.isArray(error.response.data)) {
 
@@ -155,7 +157,9 @@ export const AuthProvider = ({ children }) => {
             loginInv,
             regisClient,
             user,
-            isAutenticado,
+            isAutenAdmin,
+            isAutenClient,
+            isAutenInv,
             isRegistrado,
             errorsBack
 

@@ -5,7 +5,7 @@ import Home from "./pages/landings/Home";
 
 import { NavBooksGeneral, NavBooksAdminFocused } from "./pages/books/navBooksAdmin";
 
-import {LoginAdmin, LoginClient, LoginInv} from "./pages/login/Login";
+import { LoginAdmin, LoginClient, LoginInv } from "./pages/login/Login";
 import Logout from "./pages/login/Logout";
 import Register from "./pages/login/Register";
 
@@ -29,6 +29,8 @@ import { DelFoward, DelLanding } from "./pages/landings/Delete";
 import { NavDelete } from "./pages/delete/navDelete";
 import BookForm from "./pages/forms/libro";
 import { AuthProvider } from "./context/authContext";
+//Rutas protegidas
+import { ProtectedAdmin, ProtectedClient, ProtectedInv } from "./pages/protected/ProtectedRoutes";
 
 function App() {
   return (
@@ -39,174 +41,185 @@ function App() {
           <Link to="profile" className="navBar"> Profile</Link>
           <Link to="register" className="navBar"> Register </Link>
           <Link to="login" className="navBar"> Login </Link>
-          
           <Link to="/admin/login" className="navBar"> Login_Admin </Link>
           <Link to="/inv/login" className="navBar"> Login_Inv </Link>
-
           <Link to="/admin/books" className="navBar"> Libros_Admin </Link>
           <Link to="/admin/users" className="navBar"> Usuarios_Admin </Link>
           <Link to="/admin/edit" className="navBar"> Editar_Admin </Link>
           <Link to="/admin/create" className="navBar"> Crear_Admin </Link>
-
           <Link to="/carrito" className="navBar"> Carrito </Link>
           <Link to="logout" className="navBar"> Logout </Link>
         </nav>
         <div className="mainBody">
           <Routes>
+            {/* / */}
+            <Route path="/" element={<Home />} />
             {/* ADMINISTRADOR */}
-            <Route path="admin" element={<Home />} />
-            <Route path="admin">
+            {/* /admin/login/ */}
+            <Route path="/admin/login" element={<LoginAdmin />} />
+            <Route element={<ProtectedAdmin />}>
+              <Route path="admin" element={<Home />} />
+              <Route path="admin">
 
-              {/* /admin/books/ */}
-              <Route path="books" element={<NavBooksGeneral />}>
-                <Route path="" element={<ListLibros />} />
-                {/* /admin/books/deleted/ */}
-                <Route path=":id" element={<NavBooksAdminFocused />}>
-                  <Route path="" element={<ProductDisplay />} />
-                </Route>
-                {/* /admin/books/deleted/ */}
-                <Route path="deleted" element={<DelFoward />} />
-                {/*Fin de deleted */}
-              </Route>
-
-              {/* /admin/create/ */}
-              <Route path="create" element={<CreateLanding />}>
-                <Route path="" element={<NavEdit />} />
-                {/* /admin/create/users/ */}
-                <Route path="users" element={<EditUsuarios />}>
-                  <Route path="" element={<UserFormAdmin />} />
-                  {/* /admin/create/users/ */}
-                  {/*<Route path="email" element={<EditEmail />}>
-                <Route path="" element={<EmailForm />} />
-              </Route>*/}
-                </Route>
-                {/* /admin/create/books/ */}
-                <Route path="books" element={<EditLibro />} >{/*Libro! */}
-                  <Route path="" element={<BookForm />} />
-                </Route>
-              </Route>{/*Fin de create*/}
-
-              {/* /admin/del/ */}
-              <Route path="del" element={<DelLanding />}>{/* Eliminando! */}
-                <Route path="" element={<NavEdit />} />
-                {/* /admin/del/books/ */}
-                <Route path="books" element={<NavBooksGeneral />}>{/* Libros! Mostrar Crear*/}
-                  <Route path="" element={<ListLibros />} />
-                  <Route path=":id" element={<NavDelete />}>
-                    <Route path="" element={<ProductDisplay />} />
-                  </Route>
-                </Route>
-                {/* /admin/del/users/ */}
-                <Route path="users" element={<EditUsuarios />}>
-                  <Route path="" element={<NavEditUser />} />
-                  {/* /admin/create/users/ */}
-                  {/*<Route path="email" element={<EditEmail />}>
-                <Route path="" element={<EmailForm />} />
-              </Route>*/}
-                </Route>
-
-              </Route>{/*Fin de del*/}
-
-              {/* /admin/edit/ */}
-              <Route path="edit" element={<EditLanding />}>
-                {/*<Route path="" element={<NavEditUser />} /> */}
-                <Route path="" element={<NavEdit />} />
-                {/* /admin/edit/users/ */}
-                <Route path="users" element={<EditUsuarios />}>
-                  <Route path="" element={<NavEditUser />} />
-                  {/* /admin/edit/users/email */}
-                  <Route path="email" element={<EditEmail />}>
-                    <Route path="" element={<EmailForm />} />
-                  </Route>
-                  {/* /admin/edit/users/pass */}
-                  <Route path="pass" element={<EditPass />}>
-                    <Route path="" element={<PassForm />} />
-                  </Route>
-                  {/* /admin/edit/users/dato */}
-                  <Route path="datos" element={<EditDatos />}>
-                    <Route path="" element={<UserForm />} />
-                  </Route>
-                  {/* /admin/edit/users/card */}
-                  <Route path="card" element={<EditCard />}>
-                    <Route path="" element={<CardForm />} />
-                  </Route>
-                </Route>
-                {/* /admin/edit/books/ */}
+                {/* /admin/books/ */}
                 <Route path="books" element={<NavBooksGeneral />}>
                   <Route path="" element={<ListLibros />} />
-                  <Route path=":id">
-                    <Route path="" element={<NavEditLibro />} />
+                  {/* /admin/books/deleted/ */}
+                  <Route path=":id" element={<NavBooksAdminFocused />}>
+                    <Route path="" element={<ProductDisplay />} />
                   </Route>
-                  {/* /admin/edit/books/datos/ */}
-                  <Route path="datos">
-                    <Route path="" element={<EditDatosEspec />} />
-                    <Route path=":id" element={<BacktoBooks />}>
-                      <Route path="" element={<BookForm />} />
+                  {/* /admin/books/deleted/ */}
+                  <Route path="deleted" element={<DelFoward />} />
+                  {/*Fin de deleted */}
+                </Route>
+
+                {/* /admin/create/ */}
+                <Route path="create" element={<CreateLanding />}>
+                  <Route path="" element={<NavEdit />} />
+                  {/* /admin/create/users/ */}
+                  <Route path="users" element={<EditUsuarios />}>
+                    <Route path="" element={<UserFormAdmin />} />
+                    {/* /admin/create/users/ */}
+                    {/*<Route path="email" element={<EditEmail />}>
+                <Route path="" element={<EmailForm />} />
+              </Route>*/}
+                  </Route>
+                  {/* /admin/create/books/ */}
+                  <Route path="books" element={<EditLibro />} >{/*Libro! */}
+                    <Route path="" element={<BookForm />} />
+                  </Route>
+                </Route>{/*Fin de create*/}
+
+                {/* /admin/del/ */}
+                <Route path="del" element={<DelLanding />}>{/* Eliminando! */}
+                  <Route path="" element={<NavEdit />} />
+                  {/* /admin/del/books/ */}
+                  <Route path="books" element={<NavBooksGeneral />}>{/* Libros! Mostrar Crear*/}
+                    <Route path="" element={<ListLibros />} />
+                    <Route path=":id" element={<NavDelete />}>
+                      <Route path="" element={<ProductDisplay />} />
                     </Route>
                   </Route>
-                </Route>
-                {/*<Route path="stock">
+                  {/* /admin/del/users/ */}
+                  <Route path="users" element={<EditUsuarios />}>
+                    <Route path="" element={<NavEditUser />} />
+                    {/* /admin/create/users/ */}
+                    {/*<Route path="email" element={<EditEmail />}>
+                <Route path="" element={<EmailForm />} />
+              </Route>*/}
+                  </Route>
+
+                </Route>{/*Fin de del*/}
+
+                {/* /admin/edit/ */}
+                <Route path="edit" element={<EditLanding />}>
+                  {/*<Route path="" element={<NavEditUser />} /> */}
+                  <Route path="" element={<NavEdit />} />
+                  {/* /admin/edit/users/ */}
+                  <Route path="users" element={<EditUsuarios />}>
+                    <Route path="" element={<NavEditUser />} />
+                    {/* /admin/edit/users/email */}
+                    <Route path="email" element={<EditEmail />}>
+                      <Route path="" element={<EmailForm />} />
+                    </Route>
+                    {/* /admin/edit/users/pass */}
+                    <Route path="pass" element={<EditPass />}>
+                      <Route path="" element={<PassForm />} />
+                    </Route>
+                    {/* /admin/edit/users/dato */}
+                    <Route path="datos" element={<EditDatos />}>
+                      <Route path="" element={<UserForm />} />
+                    </Route>
+                    {/* /admin/edit/users/card */}
+                    <Route path="card" element={<EditCard />}>
+                      <Route path="" element={<CardForm />} />
+                    </Route>
+                  </Route>
+                  {/* /admin/edit/books/ */}
+                  <Route path="books" element={<NavBooksGeneral />}>
+                    <Route path="" element={<ListLibros />} />
+                    <Route path=":id">
+                      <Route path="" element={<NavEditLibro />} />
+                    </Route>
+                    {/* /admin/edit/books/datos/ */}
+                    <Route path="datos">
+                      <Route path="" element={<EditDatosEspec />} />
+                      <Route path=":id" element={<BacktoBooks />}>
+                        <Route path="" element={<BookForm />} />
+                      </Route>
+                    </Route>
+                  </Route>
+                  {/*<Route path="stock">
                 <Route path="" element={<EditDatosEspec />} />
                 <Route path=":id" element={<BacktoBooks />}>
                   <Route path="" element={<StockForm />} />
                 </Route>
               </Route>*/}
-              </Route>{/*Fin de edit*/}
+                </Route>{/*Fin de edit*/}
 
 
-              {/*<Route path="/" element={<ListLibros />} />*/}
+                {/*<Route path="/" element={<ListLibros />} />*/}
 
 
-              {/* /admin/users/ */}
-              <Route path="users" element={<NavUsersGeneral />}>
-                <Route path="" element={<ListLibros />} />
-                <Route path=":id" element={<NavUsersAdminFocused />}>
-                  <Route path="" element={<ProductDisplay />} />
+                {/* /admin/users/ */}
+                <Route path="users" element={<NavUsersGeneral />}>
+                  <Route path="" element={<ListLibros />} />
+                  <Route path=":id" element={<NavUsersAdminFocused />}>
+                    <Route path="" element={<ProductDisplay />} />
+                  </Route>
                 </Route>
+                {/* /admin/profile/ */}
+                <Route path="profile" element={<Search />} />
+                {/* /admin/register/ */}
+                <Route path="register" element={<Register />} />
+
+                {/* /admin/logout/ */}
+                <Route path="logout" element={<Logout />} />
               </Route>
-              {/* /admin/profile/ */}
-              <Route path="profile" element={<Search />} />
-              {/* /admin/register/ */}
-              <Route path="register" element={<Register />} />
-              {/* /admin/login/ */}
-              <Route path="login" element={<LoginAdmin />} />
-              {/* /admin/logout/ */}
-              <Route path="logout" element={<Logout />} />
             </Route>
+
             {/*Fin de admin*/}
 
             {/* CLIENTE */}
-            {/* / */}
-            <Route path="/" element={<Home />} />
-            <Route path="/">
-              <Route path="profile" element={<Search />} />
-              <Route path="books" element={<ListLibros />}>
-                <Route path=":id" element={<ProductDisplay />} />
-                <Route path="search" element={<Search />} />
+            {/* /login */}
+            <Route path="/login" element={<LoginClient />} />
+
+            <Route element={<ProtectedClient />}>
+
+              <Route path="/">
+                <Route path="profile" element={<Search />} />
+                <Route path="books" element={<ListLibros />}>
+                  <Route path=":id" element={<ProductDisplay />} />
+                  <Route path="search" element={<Search />} />
+                </Route>
+                <Route path="pass" element={<Search />} />
+                <Route path="email" element={<Search />} />
+                <Route path="register" element={<Register />} />
+                <Route path="logout" element={<Logout />} />
               </Route>
-              <Route path="pass" element={<Search />} />
-              <Route path="email" element={<Search />} />
-              <Route path="register" element={<Register />} />
-              <Route path="login" element={<LoginClient />} />
-              <Route path="logout" element={<Logout />} />
             </Route>
+
             {/*Fin de cliente*/}
 
             {/* INVENTARIO */}
-            <Route path="inv" element={<Home />} />
-            <Route path="inv">
-              <Route path="profile" element={<Search />} />
-              <Route path="books" element={<ListLibros />}>
-                <Route path=":id" element={<ProductDisplay />} />
+            {/* /inv/login */}
+            <Route path="/inv/login" element={<LoginInv />} />
+            <Route element={<ProtectedInv />}>
+              <Route path="inv" element={<Home />} />
+              <Route path="inv">
+                <Route path="profile" element={<Search />} />
+                <Route path="books" element={<ListLibros />}>
+                  <Route path=":id" element={<ProductDisplay />} />
+                </Route>
+                <Route path="pass" element={<Search />} />
+                <Route path="email" element={<Search />} />
+                <Route path="register" element={<Search />} />
+                <Route path="logout" element={<Logout />} />
               </Route>
-              <Route path="pass" element={<Search />} />
-              <Route path="email" element={<Search />} />
-              <Route path="register" element={<Search />} />
-              <Route path="login" element={<LoginInv />} />
-              <Route path="logout" element={<Logout />} />
             </Route>
+
             {/*Fin de inventario*/}
-            
+
           </Routes>
 
         </div>

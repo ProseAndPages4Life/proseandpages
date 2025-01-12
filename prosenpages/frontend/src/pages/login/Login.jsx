@@ -9,14 +9,14 @@ export function LoginAdmin() {
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { loginAdmin, user, isAutenticado, errorsBack } = useAuth();
+  const { loginAdmin, user, isAutenAdmin, isAutenClient, isAutenInv, errorsBack } = useAuth();
   const navigate = useNavigate();
 
-  
+
   useEffect(() => {
-    if (isAutenticado) navigate("/");
-  }, [isAutenticado]);
-  
+    if (isAutenAdmin || isAutenClient || isAutenInv) navigate("/");
+  }, [isAutenAdmin, isAutenClient, isAutenInv]);
+
 
   //console.log("Usuario:");
   //console.log(user);
@@ -73,14 +73,14 @@ export function LoginClient() {
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { loginClient, user, isAutenticado, errorsBack } = useAuth();
+  const { loginClient, user, isAutenAdmin, isAutenClient, isAutenInv, errorsBack } = useAuth();
   const navigate = useNavigate();
 
-  
+
   useEffect(() => {
-    if (isAutenticado) navigate("/");
-  }, [isAutenticado]);
-  
+    if (isAutenAdmin || isAutenClient || isAutenInv) navigate("/");
+  }, [isAutenAdmin, isAutenClient, isAutenInv]);
+
 
   //console.log("Usuario:");
   //console.log(user);
@@ -119,7 +119,7 @@ export function LoginClient() {
             <p className="text">Contraseña es requerido!</p>
           )
         }
-        
+
         <div className="libros">
           <button type="submit" className="botonRegistro"><h2>Entra!</h2></button>
           <p className="text" > <br /><br />
@@ -138,14 +138,14 @@ export function LoginInv() {
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { loginInv, user, isAutenticado, errorsBack } = useAuth();
+  const { loginInv, user, isAutenAdmin, isAutenClient, isAutenInv, errorsBack } = useAuth();
   const navigate = useNavigate();
 
-  
+
   useEffect(() => {
-    if (isAutenticado) navigate("/");
-  }, [isAutenticado]);
-  
+    if (isAutenAdmin || isAutenClient || isAutenInv) navigate("/");
+  }, [isAutenAdmin, isAutenClient, isAutenInv]);
+
 
   //console.log("Usuario:");
   //console.log(user);
