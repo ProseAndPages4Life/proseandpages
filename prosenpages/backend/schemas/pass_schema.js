@@ -4,8 +4,8 @@ export const passSchema = z.object({
 Contraseña: z.string({
         required_error: "Se requiere una constraseña!"
     }).
-        min(8, { message: "Deben ser minimo 8 caracter!" }).
-        max(25, { message: "Deben ser menos de 25 caracteres!" }),
+        min(8, { message: "Contraseña: Deben ser minimo 8 caracter!" }).
+        max(25, { message: "Contraseña: Deben ser menos de 25 caracteres!" }),
 }).superRefine(({ Contraseña }, checkPassComplexity) => {
     console.log("Mostrando Contraseña:" + Contraseña);
     const containsUppercase = (ch) => /[A-Z]/.test(ch);

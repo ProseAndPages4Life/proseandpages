@@ -6,24 +6,24 @@ export const cardSchema = z.object({
     Nombre: z.string({
         required_error: "Se requiere un nombre!"
     }).
-        min(8, { message: "Deben ser minimo 8 caracter!" }).
-        max(60, { message: "Deben ser menos de 25 caracteres!" }),
+        min(8, { message: "Nombre: Deben ser minimo 8 caracter!" }).
+        max(60, { message: "Nombre: Deben ser menos de 25 caracteres!" }),
 
     Tarjeta: z.string({
         required_error: "Se requiere una tarjeta!"
     }).
-        min(13, { message: "Deben ser minimo 13 caracter!" }).
-        max(16, { message: "Deben ser menos de 16 caracteres!" }),
+        min(13, { message: "Tarjeta: Deben ser minimo 13 caracter!" }).
+        max(16, { message: "Tarjeta: Deben ser menos de 16 caracteres!" }),
 
     Vencimiento: z.string({
-        required_error: "Se requiere una fecha de vecnimiento!"
+        required_error: "Se requiere una fecha de vencimiento!"
     }).
-        length(5, { message: "Deben ser 5 numeros! Formato MM-YY" }),
+        length(5, { message: "Vencimiento: Deben ser 5 caracteres! Formato MM-YY" }),
 
     CVV: z.string({
         required_error: "Se requiere un cvv!"
     }).
-        length(3, { message: "Deben ser 3 numeros!" })
+        length(3, { message: "CVV: Deben ser 3 numeros!" })
 
 }).
     superRefine(({ Tarjeta, Vencimiento }, checaTarjeta) => {

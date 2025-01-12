@@ -7,38 +7,81 @@
     "Contraseña": "PasS11!!"
 }
 */
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: {
+        errors
+    } } = useForm();
+
+    const { regisClient, errorsBack, isRegistrado,
+        // isAutenticado
+        } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isRegistrado) navigate("/login");
+      }, [isRegistrado]);
+
+
+    const onSubmit = handleSubmit(async (datos) => {
+        console.log("Leyendo datos ingresados en la consola!")
+        console.log(datos)
+        console.log("Pasando datos al register")
+        regisClient(datos)
+    }
+    );
 
     return (
         <div className="form">
-            <form onSubmit={handleSubmit((values) =>
-                console.log(values)
-            )}>
-                <div>
-                    <label htmlFor="Nombre">Nombre: </label>
-                    <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nombre", { required: true })} /><br /><br />
-                </div>
+            {
+                errorsBack.map((error, i) => (
+                    <div className="text" key={error}>
+                        {error}
+                    </div>
+                ))
+            }
+            <form onSubmit={onSubmit}>
 
-                <div>
-                    <label htmlFor="Apellido">Apellido: </label>
-                    <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Apellido", { required: true })} /><br /><br />
-                </div>
-                <div>
-                    <label htmlFor="Nacimiento">Nacimiento: </label>
-                    <input type="date" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nacimiento", { required: true })} /><br /><br />
-                </div>
-                <div>
-                    <label htmlFor="Email">Correo electrónico: </label>
-                    <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Email", { required: true })} /><br /><br />
-                </div>
-                <div>
-                    <label htmlFor="Contraseña">Contraseña: </label>
-                    <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Contraseña", { required: true })} /><br /><br />
-                </div>
+                <label htmlFor="Nombre">Nombre: </label>
+                <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nombre", { required: true })} /><br /><br />
+                {
+                    errors.Nombre && (
+                        <p className="text">Nombre es requerido!</p>
+                    )
+                }
+                <label htmlFor="Apellido">Apellido: </label>
+                <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Apellido", { required: true })} /><br /><br />
+                {
+                    errors.Apellido && (
+                        <p className="text">Apellido es requerido!</p>
+                    )
+                }
+                <label htmlFor="Nacim">Nacimiento: </label>
+                <input type="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nacim", { required: true })} /><br /><br />
+                {
+                    errors.Nacimiento && (
+                        <p className="text">Nacimiento es requerido!</p>
+                    )
+                }
+                <label htmlFor="Email">Correo electrónico: </label>
+                <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Email", { required: true })} /><br /><br />
+                {
+                    errors.Email && (
+                        <p className="text">Email es requerido!</p>
+                    )
+                }
+                <label htmlFor="Contraseña">Contraseña: </label>
+                <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Contraseña", { required: true })} /><br /><br />
+                {
+                    errors.Contraseña && (
+                        <p className="text">Contraseña es requerido!</p>
+                    )
+                }
                 <div className="libros">
                     <div className="libros">
                         <a>

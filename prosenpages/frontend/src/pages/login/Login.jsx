@@ -7,7 +7,7 @@ function Login() {
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { loginUser, user, isAutenticado, errorsLogin } = useAuth();
+  const { loginUser, user, isAutenticado, errorsBack } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,8 +15,9 @@ function Login() {
   }, [isAutenticado]);
 
 
-  console.log("Usuario:");
-  console.log(user);
+  //console.log("Usuario:");
+  //console.log(user);
+
   const onSubmit = handleSubmit(async (user) => {
     loginUser(user);
   }
@@ -25,7 +26,7 @@ function Login() {
   return (
     <div className="form">
       {
-        errorsLogin.map((error, i) => (
+        errorsBack.map((error, i) => (
           <div key={error}>
             {error}
           </div>

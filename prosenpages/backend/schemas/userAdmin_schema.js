@@ -14,8 +14,6 @@ export const userAdminNoLoginSchema = z.object({
 
     Nacim: z.string({
         required_error: "Se requiere una fecha!"
-    }).date({
-        message: "No es fecha!"
     }),
 
     /*
@@ -28,9 +26,10 @@ export const userAdminNoLoginSchema = z.object({
         required_error: "Se requiere un tipo!"
     }),
 
-}).superRefine(({ Tipo }, checkUser) => {
+}).superRefine(({ Tipo, Nacim }, checkUser) => {
 
     console.log("Mostrando Tipo:" + Tipo);
+    console.log("Mostrando Nacim:" + Nacim);
     const contieneCliente = (ch) => /^Cliente$/.test(ch);
     const contieneAdmin = (ch) => /^Administrador$/.test(ch);
     const contieneInven = (ch) => /^Inventario$/.test(ch);
@@ -73,6 +72,47 @@ export const userAdminNoLoginSchema = z.object({
             countOfInven
         });
     }
+    console.log("Mostrando Nacim:" + Nacim);
+
+    const contieneDiaMesAnio = (ch) => /(3[01]|[12][0-9]|0[1-9])(\/|-)(1[0-2]|0[1-9])(\/|-)(19|20)\d{2}/.test(ch);
+    const contieneAnioMesDia = (ch) => /(19|20)\d{2}(\/|-)(1[0-2]|0[1-9])(\/|-)(3[01]|[12][0-9]|0[1-9])/.test(ch);
+    const contieneMesDiaAnio = (ch) => /(1[0-2]|0[1-9])(\/|-)(3[01]|[12][0-9]|0[1-9])(\/|-)(19|20)\d{2}/.test(ch);
+
+    let countOfDiaMesAnio = 0,
+        countOfAnioMesDia = 0,
+        countOfMesDiaAnio = 0;
+
+    const date = Nacim;
+
+
+    if (contieneDiaMesAnio(date)) {
+        console.log("Contando DiaMesAnio:");
+        countOfDiaMesAnio++;
+        console.log(countOfDiaMesAnio);
+    }
+    else if (contieneAnioMesDia(date)) {
+        console.log("Contando AnioMesDia:");
+        countOfAnioMesDia++;
+        console.log(countOfAnioMesDia);
+    }
+    else if (contieneMesDiaAnio(date)) {
+        console.log("Contando MesDiaAnio:");
+        countOfMesDiaAnio++;
+        console.log(countOfMesDiaAnio);
+    }
+    if (
+        countOfDiaMesAnio == 1 ||
+        countOfAnioMesDia == 1 ||
+        countOfMesDiaAnio == 1
+    ) {
+        console.log("Fecha correcta!");
+    }
+    else {
+        checkPassComplexity.addIssue({
+            code: 420,
+            message: "No es una fecha correcta!"
+        });
+    }
 });
 
 export const userAdminSchema = z.object({
@@ -89,8 +129,6 @@ export const userAdminSchema = z.object({
 
     Nacim: z.string({
         required_error: "Se requiere una fecha!"
-    }).date({
-        message: "No es fecha!"
     }),
 
     Email: z.string({
@@ -108,7 +146,7 @@ export const userAdminSchema = z.object({
         required_error: "Se requiere un tipo!"
     }),
 
-}).superRefine(({ Contraseña, Tipo }, checkUser) => {
+}).superRefine(({ Contraseña, Tipo, Nacim }, checkUser) => {
     console.log("Mostrando Contraseña:" + Contraseña);
     console.log("Mostrando Tipo:" + Tipo);
     const containsUppercase = (ch) => /[A-Z]/.test(ch);
@@ -198,6 +236,48 @@ export const userAdminSchema = z.object({
             countOfCliente,
             countOfAdmin,
             countOfInven
+        });
+    }
+
+    console.log("Mostrando Nacim:" + Nacim);
+
+    const contieneDiaMesAnio = (ch) => /(3[01]|[12][0-9]|0[1-9])(\/|-)(1[0-2]|0[1-9])(\/|-)(19|20)\d{2}/.test(ch);
+    const contieneAnioMesDia = (ch) => /(19|20)\d{2}(\/|-)(1[0-2]|0[1-9])(\/|-)(3[01]|[12][0-9]|0[1-9])/.test(ch);
+    const contieneMesDiaAnio = (ch) => /(1[0-2]|0[1-9])(\/|-)(3[01]|[12][0-9]|0[1-9])(\/|-)(19|20)\d{2}/.test(ch);
+
+    let countOfDiaMesAnio = 0,
+        countOfAnioMesDia = 0,
+        countOfMesDiaAnio = 0;
+
+    const date = Nacim;
+
+
+    if (contieneDiaMesAnio(date)) {
+        console.log("Contando DiaMesAnio:");
+        countOfDiaMesAnio++;
+        console.log(countOfDiaMesAnio);
+    }
+    else if (contieneAnioMesDia(date)) {
+        console.log("Contando AnioMesDia:");
+        countOfAnioMesDia++;
+        console.log(countOfAnioMesDia);
+    }
+    else if (contieneMesDiaAnio(date)) {
+        console.log("Contando MesDiaAnio:");
+        countOfMesDiaAnio++;
+        console.log(countOfMesDiaAnio);
+    }
+    if (
+        countOfDiaMesAnio == 1 ||
+        countOfAnioMesDia == 1 ||
+        countOfMesDiaAnio == 1
+    ) {
+        console.log("Fecha correcta!");
+    }
+    else {
+        checkPassComplexity.addIssue({
+            code: 420,
+            message: "No es una fecha correcta!"
         });
     }
 });

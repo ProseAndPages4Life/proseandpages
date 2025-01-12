@@ -12,18 +12,39 @@ export function UserForm() {
             )}>
                 <label htmlFor="Nombre">Nombre: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nombre", { required: true })} /><br /><br />
-
+                {
+                    errors.Nombre && (
+                        <p className="text">Nombre es requerido!</p>
+                    )
+                }
                 <label htmlFor="Apellido">Apellido: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Apellido", { required: true })} /><br /><br />
-
+                {
+                    errors.Apellido && (
+                        <p className="text">Apellido es requerido!</p>
+                    )
+                }
                 <label htmlFor="Nacimiento">Nacimiento: </label>
                 <input type="date" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nacimiento", { required: true })} /><br /><br />
-
+                {
+                    errors.Nacimiento && (
+                        <p className="text">Nacimiento es requerido!</p>
+                    )
+                }
                 <label htmlFor="Email">Correo electrónico: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Email", { required: true })} /><br /><br />
-
+                {
+                    errors.Email && (
+                        <p className="text">Email es requerido!</p>
+                    )
+                }
                 <label htmlFor="Contraseña">Contraseña: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Contraseña", { required: true })} /><br /><br />
+                {
+                    errors.Contraseña && (
+                        <p className="text">Contraseña es requerido!</p>
+                    )
+                }
                 <div className="libros">
                     <div className="libros">
                         <a>
@@ -51,33 +72,59 @@ export function UserFormAdmin() {
             )}>
                 <label htmlFor="Nombre">Nombre: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nombre", { required: true })} /><br /><br />
-
+                {
+                    errors.xxx && (
+                        <p className="text">xxx es requerido!</p>
+                    )
+                }
                 <label htmlFor="Apellido">Apellido: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Apellido", { required: true })} /><br /><br />
-
+                {
+                    errors.xxx && (
+                        <p className="text">xxx es requerido!</p>
+                    )
+                }
                 <label htmlFor="Nacimiento">Nacimiento: </label>
                 <input type="date" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nacimiento", { required: true })} /><br /><br />
-
+                {
+                    errors.xxx && (
+                        <p className="text">xxx es requerido!</p>
+                    )
+                }
                 <label htmlFor="Email">Correo electrónico: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Email", { required: true })} /><br /><br />
-
+                {
+                    errors.xxx && (
+                        <p className="text">xxx es requerido!</p>
+                    )
+                }
                 <label htmlFor="Contraseña">Contraseña: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Contraseña", { required: true })} /><br /><br />
 
-                
+
                 <div>
                     <input type="radio" id="Administrador" name="Tipo" value="Administrador" />
                     <label htmlFor="Administrador">Administrador</label>
 
-                    <input type="radio" id="Inventario" name="Tipo" value="Inventario" />
+                
+{
+          errors.Email && (
+            <p className="text">Email es requerido!</p> 
+          )
+        }
+                <input type="radio" id="Inventario" name="Tipo" value="Inventario" />
                     <label htmlFor="Inventario">Inventario</label>
 
-                    <input type="radio" id="Cliente" name="Tipo" value="Cliente" />
+                
+{
+          errors.Email && (
+            <p className="text">Email es requerido!</p> 
+          )
+        }
+                <input type="radio" id="Cliente" name="Tipo" value="Cliente" />
                     <label htmlFor="Cliente">Cliente</label>
                 </div>
-                <br />
-
-                {/*
+                <br />                {/*
                 <label htmlFor="Tipo">Tipo: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Contraseña", { required: true })} /><br /><br />
 
