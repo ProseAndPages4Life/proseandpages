@@ -50,7 +50,11 @@ export function LoginAdmin() {
         <label htmlFor="Contraseña">Contraseña: </label>
         {/* <input type="text" {...register("Contraseña", { required: true })} /><br /><br /> */}
         <input type="password" {...register("Contraseña", { required: true })} /><br /><br />
-        
+        {
+          errors.Contraseña && (
+            <p className="text">Contraseña es requerido!</p>
+          )
+        }
         <div className="libros">
           <button type="submit" className="botonRegistro"><h2>Entra!</h2></button>
           <p className="text" > <br /><br />
@@ -110,6 +114,11 @@ export function LoginClient() {
         <label htmlFor="Contraseña">Contraseña: </label>
         {/* <input type="text" {...register("Contraseña", { required: true })} /><br /><br /> */}
         <input type="password" {...register("Contraseña", { required: true })} /><br /><br />
+        {
+          errors.Contraseña && (
+            <p className="text">Contraseña es requerido!</p>
+          )
+        }
         
         <div className="libros">
           <button type="submit" className="botonRegistro"><h2>Entra!</h2></button>
@@ -170,7 +179,11 @@ export function LoginInv() {
         <label htmlFor="Contraseña">Contraseña: </label>
         {/* <input type="text" {...register("Contraseña", { required: true })} /><br /><br /> */}
         <input type="password" {...register("Contraseña", { required: true })} /><br /><br />
-        
+        {
+          errors.Contraseña && (
+            <p className="text">Contraseña es requerido!</p>
+          )
+        }
         <div className="libros">
           <button type="submit" className="botonRegistro"><h2>Entra!</h2></button>
           <p className="text" > <br /><br />
