@@ -7,7 +7,7 @@ export const createTarjeta = async (req, res) => {
         //var valid = require("card-validator");
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -26,7 +26,7 @@ export const createTarjeta = async (req, res) => {
         console.log(tarjetasUser.length);
         if (tarjetasUser.length >= 2) {
             console.log("Ya no puedes agregar más tarjetas!!");
-            return res.status(200).json({ Error: "Ya no puedes agregar más tarjetas!!" });
+            return res.status(200).json(["Ya no puedes agregar más tarjetas!!"]);
         }
         //existe la que se quire agreagar?
         console.log("Checando si ya existe la tarjeta");
@@ -46,7 +46,7 @@ export const createTarjeta = async (req, res) => {
                 console.log("Ya existe la tarjeta en la base!");
                 console.log("Deteniendo for");
                 n = tarjetasUser.length;
-                return res.status(200).json({ Error: "Ya existe esa tarjeta!!" });
+                return res.status(200).json(["Ya existe esa tarjeta!!"]);
             }
         }
 
@@ -90,12 +90,12 @@ export const createTarjeta = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Ya no puedes agregar más tarjetas!!");
-                return res.status(500).json({ Error: "Ya no puedes agregar más tarjetas!!" });
+                return res.status(500).json(["Ya no puedes agregar más tarjetas!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
         console.log("Error en regisUser().\n", error);
@@ -108,7 +108,7 @@ export const getTarjeta = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -120,7 +120,7 @@ export const getTarjeta = async (req, res) => {
 
         if (!stockTarjeta.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(500).json({ message: "Nada en tu tarjeta!" });
+            return res.status(500).json(["Nada en tu tarjeta!"]);
         } else {
             console.log("Mostrando resultados de consulta");
             console.log(stockTarjeta);
@@ -166,7 +166,7 @@ export const getTarjeta = async (req, res) => {
 
     } catch (error) {
         console.log("Error en getTarjeta().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -176,7 +176,7 @@ export const updateTarjeta = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -200,13 +200,13 @@ export const updateTarjeta = async (req, res) => {
         console.log(cardsUser);
         if (!cardsUser.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(200).json({ message: "No tienes tarjetas!" });
+            return res.status(200).json(["No tienes tarjetas!"]);
         }
 
-        for(let p=0;p<=(cardsUser.length-1);p++){
-            if((cardsUser[p].Name==Nombre)&&(cardsUser[p].Num==Tarjeta)&&(cardsUser[p].Venc==Vencimiento)&&(cardsUser[p].CVV==CVV)){
-                console.log("Tarjeta ya existe!")
-                return res.status(201).json({ message: "Tarjeta ya existe!" });
+        for (let p = 0; p <= (cardsUser.length - 1); p++) {
+            if ((cardsUser[p].Name == Nombre) && (cardsUser[p].Num == Tarjeta) && (cardsUser[p].Venc == Vencimiento) && (cardsUser[p].CVV == CVV)) {
+                console.log("Tarjeta ya existe!");
+                return res.status(201).json(["Tarjeta ya existe!"]);
             }
         }
 
@@ -249,7 +249,7 @@ export const updateTarjeta = async (req, res) => {
 
         if (!stockTarjeta.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            //return res.status(500).json({ message: "Nada en tu tarjeta!" });
+            //return res.status(500).json(["Nada en tu tarjeta!" ]);
         }
         console.log("Mostrando resultados de update");
         console.log(stockTarjeta);
@@ -257,7 +257,7 @@ export const updateTarjeta = async (req, res) => {
         console.log(stockTarjeta.length);
 
         console.log("generando json!");
-        
+
 
         Tarjeta = Tarjeta.substr(-4, 4);
         let jsonGen = {
@@ -280,7 +280,7 @@ export const updateTarjeta = async (req, res) => {
 
     } catch (error) {
         console.log("Error en getTarjeta().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };

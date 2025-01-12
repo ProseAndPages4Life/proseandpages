@@ -14,7 +14,7 @@ export const createOrder = async (req, res) => {
 
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -27,7 +27,7 @@ export const createOrder = async (req, res) => {
         //DESPUES LA PUEDES USAR PARA INSERTAR LA ORDEN. 
         //LO MISMO PERO CON EL DOMICILIO
         //if(tarjeta==null||undefined||0){
-        //return res.status(500).json({ message: "Necesitas agregar una tarjeta!" });
+        //return res.status(500).json([ "Necesitas agregar una tarjeta!" ]);
         // }
         console.log("Cachando JSON para saber domicilio y tarjeta");
         console.log(req.body);
@@ -36,7 +36,7 @@ export const createOrder = async (req, res) => {
         console.log("Datos extraídos:\n", Tarjeta, Domicilio);
 
         console.log("Checando si el usuario tiene la tarjeta y el domicilio solicitados");
-        
+
         console.log("Primero tarjeta");
         const [cardsUser] = await pool.query(
             //"INSERT IGNORE INTO Login(Email, Contraseña) VALUES (?,?)",
@@ -47,32 +47,32 @@ export const createOrder = async (req, res) => {
         console.log(cardsUser);
         if (!cardsUser.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(200).json({ message: "No tienes tarjetas!" });
-        }   
-        console.log(cardsUser.length)
-
-        if(cardsUser.length==2){
-        switch (Tarjeta) {
-            case "1":
-                console.log("Usando tarjeta 1")
-                Tarjeta = cardsUser[0].id;
-                console.log("Usando ahora")
-                console.log(Tarjeta)
-                break;
-            case "2":
-                console.log("Usando tarjeta 2")
-                Tarjeta = cardsUser[1].id;
-                console.log("Usando ahora")
-                console.log(Tarjeta)
-                break;
-            default:
-                break;
+            return res.status(200).json(["No tienes tarjetas!"]);
         }
-        }else{
-            console.log("Usando tarjeta 1")
-                Tarjeta = cardsUser[0].id;
-                console.log("Usando ahora")
-                console.log(Tarjeta)
+        console.log(cardsUser.length);
+
+        if (cardsUser.length == 2) {
+            switch (Tarjeta) {
+                case "1":
+                    console.log("Usando tarjeta 1");
+                    Tarjeta = cardsUser[0].id;
+                    console.log("Usando ahora");
+                    console.log(Tarjeta);
+                    break;
+                case "2":
+                    console.log("Usando tarjeta 2");
+                    Tarjeta = cardsUser[1].id;
+                    console.log("Usando ahora");
+                    console.log(Tarjeta);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            console.log("Usando tarjeta 1");
+            Tarjeta = cardsUser[0].id;
+            console.log("Usando ahora");
+            console.log(Tarjeta);
         }
 
         console.log("segundo addr");
@@ -85,33 +85,33 @@ export const createOrder = async (req, res) => {
         console.log(addrUser);
         if (!addrUser.length) {
             console.log("No tienes domicilios!");
-            return res.status(200).json({ message: "No tienes domicilios!" });
+            return res.status(200).json(["No tienes domicilios!"]);
         }
 
-        console.log(addrUser.length)
+        console.log(addrUser.length);
 
-        if(addrUser.length==2){
-        switch (Domicilio) {
-            case "1":
-                console.log("Usando domicilio 1")
-                Domicilio = addrUser[0].Id;
-                console.log("Usando ahora")
-                console.log(Domicilio)
-                break;
-            case "2":
-                console.log("Usando domicilio 2")
-                Domicilio = addrUser[1].Id;
-                console.log("Usando ahora")
-                console.log(Domicilio)
-                break;
-            default:
-                break;
-        }
-        }else{
-            console.log("Usando domicilio 1")
-                Domicilio = addrUser[0].Id;
-                console.log("Usando ahora")
-                console.log(Domicilio)
+        if (addrUser.length == 2) {
+            switch (Domicilio) {
+                case "1":
+                    console.log("Usando domicilio 1");
+                    Domicilio = addrUser[0].Id;
+                    console.log("Usando ahora");
+                    console.log(Domicilio);
+                    break;
+                case "2":
+                    console.log("Usando domicilio 2");
+                    Domicilio = addrUser[1].Id;
+                    console.log("Usando ahora");
+                    console.log(Domicilio);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            console.log("Usando domicilio 1");
+            Domicilio = addrUser[0].Id;
+            console.log("Usando ahora");
+            console.log(Domicilio);
         }
 
         console.log("Jalando datos del carrito");
@@ -122,7 +122,7 @@ export const createOrder = async (req, res) => {
             [Usuario.id]);
         if (!stockCarrito.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(200).json({ message: "Nada en tu carrito!" });
+            return res.status(200).json(["Nada en tu carrito!"]);
         }
 
         //Todo el carrito se guarda en un array
@@ -160,7 +160,7 @@ export const createOrder = async (req, res) => {
             if ((!stockCarrito.length) || (stockCarrito.length == [])) {
                 console.log("Ya no hay stock!");
                 console.log("Omitiendo producto!");
-                //return res.status(500).json({ message: "Ya no hay stock!" });
+                //return res.status(500).json([ "Ya no hay stock!" ]);
             } else {
                 let stock = stockLibros[0].Stock;
 
@@ -184,7 +184,7 @@ export const createOrder = async (req, res) => {
                     [stockMenos, Libro]);
                 if ((!quitStock.length) || (quitStock.length == [])) {
                     console.log("Fallo el update!");
-                    //return res.status(500).json({ message: "Ya no hay stock!" });
+                    //return res.status(500).json([ "Ya no hay stock!" ]);
                 }
                 console.log("Resultado de update:");
                 console.log(quitStock);
@@ -206,7 +206,7 @@ export const createOrder = async (req, res) => {
                     [numOrder, UserId, Libro, Cantidad, Domicilio, Tarjeta]);
                 if ((!insertOrder.ResultSetHeader) || (insertOrder.ResultSetHeader == [])) {
                     console.log("Fallo el insertOrder!");
-                    //return res.status(500).json({ message: "Ya no hay stock!" });
+                    //return res.status(500).json([ "Ya no hay stock!" ]);
                 }
                 console.log("Resultado de insertOrder:");
                 console.log(insertOrder);
@@ -227,7 +227,7 @@ export const createOrder = async (req, res) => {
                     [UserId, (insertOrder.insertId)]);
                 if ((!checkOrderUp.length) || (checkOrderUp.length == [])) {
                     console.log("Fallo el checkOrderUp!");
-                    //return res.status(500).json({ message: "Ya no hay stock!" });
+                    //return res.status(500).json([ "Ya no hay stock!" ]);
                 }
                 console.log("Resultado de checkOrderUp:");
                 console.log(checkOrderUp);
@@ -271,7 +271,7 @@ export const createOrder = async (req, res) => {
                 console.log(quitCarrito);
                 if ((!quitCarrito.length) || (quitCarrito.length == [])) {
                     console.log("Fallo el delete!");
-                    //return res.status(500).json({ message: "Ya no hay stock!" });
+                    //return res.status(500).json([ "Ya no hay stock!" ]);
                 }
                 console.log("Resultado de update:");
                 console.log(quitCarrito);
@@ -292,12 +292,12 @@ export const createOrder = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en createOrder().\n", error);
                 console.log("Falló funcion crear orden.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
         console.log("Error en regisUser().\n", error);
@@ -311,7 +311,7 @@ export const getOrder = async (req, res) => {
     try {
         let Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -327,7 +327,7 @@ export const getOrder = async (req, res) => {
 
         if ((!ordenes.length) || (ordenes.length == [])) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(500).json({ message: "No haz hecho ordenes!" });
+            return res.status(500).json(["No haz hecho ordenes!"]);
         } else {
             console.log("Consulta con éxito!\n");
             console.log("Mostrando resultados de consulta");
@@ -384,7 +384,7 @@ export const getOrder = async (req, res) => {
         //res.json(ordenes);
     } catch (error) {
         console.log("Error en getUsers().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };

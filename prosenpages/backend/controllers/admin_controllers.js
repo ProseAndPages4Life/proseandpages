@@ -27,13 +27,13 @@ export const getUsers = async (req, res) => {
         //throw new Error("Error en getBooks(). No se pudo realizar la consulta select. Seguramente la tabla no existe.")
         const [resultado] = await pool.query("SELECT * FROM Usuarios WHERE id!= ? ORDER BY Tipo ASC",
             [Usuario.id]);
-        console.log(resultado)
+        console.log(resultado);
         console.log("Consulta con éxito!\n");
         console.log("Mandando resultados al navegador!");
         res.json(resultado);
     } catch (error) {
         console.log("Error en getUsers().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -52,7 +52,7 @@ export const getaUser = async (req, res) => {
         const [resultado] = await pool.query("SELECT * FROM Usuarios WHERE (id= ?) AND (id!=?)",
             [req.params.id, Usuario.id]
         );
-        if (resultado.length == 0) return res.status(404).json({ message: "Usuario no encontrado!!" });
+        if (resultado.length == 0) return res.status(404).json(["Usuario no encontrado!!"]);
 
         console.log("Consulta con éxito!\n");
 
@@ -61,7 +61,7 @@ export const getaUser = async (req, res) => {
         res.json(resultado[0]);
     } catch (error) {
         console.log("Error en getaUser().\nNo se pudo realizar la consulta select. Seguramente el id no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -100,7 +100,7 @@ export const createUser = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
@@ -116,7 +116,7 @@ export const createUser = async (req, res) => {
             console.log("No se registro el usuario!\n");
             console.log("Correo ya existe!\n");
             console.log("Finalizando");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         console.log("Hasheando password:\n");
         const Hashed = await bcrypt.hash(Contraseña, 10);//Hasheando contraseña
@@ -152,12 +152,12 @@ export const createUser = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
         console.log("Error en regisUser().\n", error);
@@ -175,20 +175,20 @@ export const updateUser = async (req, res) => {
         }
         console.log("logueado como: ", Usuario);
 
-        const idUsuario=Usuario.id;
-        const idUrl=req.params.id;
-        let sameUser=0;
-        console.log("UsuarioId: "+idUsuario)
-        console.log("UrlID: "+idUrl)
-        if(idUrl==idUsuario){
-            console.log("Mismo usuario!")
-            sameUser=1;
-            const Tipo=req.body.Tipo;
-            console.log("Tipo:")
-            console.log(Tipo)
-            if(Tipo!=undefined){
-                console.log("No puedes actualizar tu tipo!")
-                return res.status(404).json({ message: "No cambies tu tipo!!" });
+        const idUsuario = Usuario.id;
+        const idUrl = req.params.id;
+        let sameUser = 0;
+        console.log("UsuarioId: " + idUsuario);
+        console.log("UrlID: " + idUrl);
+        if (idUrl == idUsuario) {
+            console.log("Mismo usuario!");
+            sameUser = 1;
+            const Tipo = req.body.Tipo;
+            console.log("Tipo:");
+            console.log(Tipo);
+            if (Tipo != undefined) {
+                console.log("No puedes actualizar tu tipo!");
+                return res.status(404).json(["No cambies tu tipo!!"]);
             }
         }
         console.log('Actualizando libro');
@@ -214,14 +214,14 @@ export const updateUser = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
         console.log("Continuando...");
         */
-        
-        
+
+
 
         const resultado = await pool.query("UPDATE Usuarios SET ? WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -230,7 +230,7 @@ export const updateUser = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("UPDATE Login SET Actualizacion=now() WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -245,7 +245,7 @@ export const updateUser = async (req, res) => {
         res.status(200).json("Actualizado con éxito!");
     } catch (error) {
         console.log("Error en updateBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -268,7 +268,7 @@ export const updateUserPass = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("UPDATE Login SET Actualizacion=now() WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -283,7 +283,7 @@ export const updateUserPass = async (req, res) => {
         res.status(200).json("Actualizada con éxito!");
     } catch (error) {
         console.log("Error en updateBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -320,7 +320,7 @@ export const updateUserEmail = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
@@ -333,7 +333,7 @@ export const updateUserEmail = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("UPDATE Login SET Actualizacion=now() WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -348,7 +348,7 @@ export const updateUserEmail = async (req, res) => {
         res.status(200).json("Actualizada con éxito!");
     } catch (error) {
         console.log("Error en updateBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -366,7 +366,7 @@ export const deleteUser = async (req, res) => {
         if (Usuario.id == req.params.id) {
             console.log("No puedes borrar tu usuario!!\n");
             console.log("Finalizando funcion de eliminar");
-            return res.status(404).json({ message: "No puedes borrar tu usuario!!" });
+            return res.status(404).json(["No puedes borrar tu usuario!!"]);
         }
         console.log("Realizando eliminacion de usuario!\n");
 
@@ -377,7 +377,7 @@ export const deleteUser = async (req, res) => {
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
             console.log("Finalizando funcion de eliminar");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("DELETE FROM Login WHERE id= ?",
             [req.params.id]
@@ -387,10 +387,10 @@ export const deleteUser = async (req, res) => {
         console.log(resultado, "\n---&---\n", resultado2, "\n");
         console.log("Mandando resultados al navegador!");
         console.log("Finalizando funcion de eliminar");
-        return res.status(200).json({ message: "Eliminado con éxito!!" });
+        return res.status(200).json(["Eliminado con éxito!!"]);
     } catch (error) {
         console.log("Error en deleteBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 
 }
@@ -418,7 +418,7 @@ export const getaBook = async (req,res) => {
         const [resultado] = await pool.query("SELECT * FROM Libros WHERE id= ? ORDER BY Titulo DESC",
             [req.params.id]
         )
-        if (resultado.length == 0) return res.status(404).json({ message: "Libro no encontrado!!"})
+        if (resultado.length == 0) return res.status(404).json(["Libro no encontrado!!"})
         
         console.log("Consulta con éxito!\n");
 

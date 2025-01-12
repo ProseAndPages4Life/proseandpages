@@ -8,7 +8,7 @@ export const getBooks = async (req, res) => {
         /*
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear" ]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -22,7 +22,7 @@ export const getBooks = async (req, res) => {
         res.json(resultado);
     } catch (error) {
         console.log("Error en getBooks().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -32,7 +32,7 @@ export const getaBook = async (req, res) => {
         /*
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear" ]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -42,7 +42,7 @@ export const getaBook = async (req, res) => {
         const [resultado] = await pool.query("SELECT * FROM Libros WHERE id= ? ORDER BY Titulo DESC",
             [req.params.id]
         );
-        if (resultado.length == 0) return res.status(404).json({ message: "Libro no encontrado!!" });
+        if (resultado.length == 0) return res.status(404).json(["Libro no encontrado!!"]);
 
         console.log("Consulta con éxito!\n");
 
@@ -51,7 +51,7 @@ export const getaBook = async (req, res) => {
         res.json(resultado[0]);
     } catch (error) {
         console.log("Error en getaBook().\nNo se pudo realizar la consulta select. Seguramente el id no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -60,7 +60,7 @@ export const createBook = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear" ]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -86,7 +86,7 @@ export const createBook = async (req, res) => {
 
     } catch (error) {
         console.log("Error en createBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Terminando función!!\n");
 };
@@ -95,7 +95,7 @@ export const updateBook = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear" ]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -108,13 +108,13 @@ export const updateBook = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Libro no existe!!\n");
-            return res.status(404).json({ message: "Libro no existe!!" });
+            return res.status(404).json(["Libro no existe!!"]);
         }
         console.log(resultado);
         res.status(200).json(resultado);
     } catch (error) {
         console.log("Error en updateBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -122,7 +122,7 @@ export const deleteBook = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear" ]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -135,15 +135,15 @@ export const deleteBook = async (req, res) => {
         if (resultado[0].affectedRows == 0) {
             console.log("Libro no existe!!\n");
             console.log("Finalizando funcion de consulta");
-            return res.status(404).json({ message: "Libro no existe!!" });
+            return res.status(404).json(["Libro no existe!!"]);
         }
         console.log("Eliminado con éxito!\n");
         console.log("Mandando resultados al navegador!");
         console.log("Finalizando funcion de consulta");
-        return res.status(200).json({ message: "Eliminado con éxito!!" });
+        return res.status(200).json(["Eliminado con éxito!!"]);
     } catch (error) {
         console.log("Error en deleteBook().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 
 };

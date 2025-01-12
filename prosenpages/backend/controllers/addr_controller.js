@@ -7,7 +7,7 @@ export const getAddr = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json([ "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -43,7 +43,7 @@ export const getAddr = async (req, res) => {
         res.json(addrsUser);
     } catch (error) {
         console.log("Error en getAddr().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };
@@ -54,7 +54,7 @@ export const createAddr = async (req, res) => {
         //var valid = require("card-validator");
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json([ "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -73,7 +73,7 @@ export const createAddr = async (req, res) => {
         console.log(addrsUser.length);
         if (addrsUser.length >= 2) {
             console.log("Ya no puedes agregar más addrs!!");
-            return res.status(200).json({ Error: "Ya no puedes agregar más addrs!!" });
+            return res.status(200).json(["Ya no puedes agregar más addrs!!"]);
         }
         //existe la que se quire agreagar?
         console.log("Checando si ya existe la addr");
@@ -97,7 +97,7 @@ export const createAddr = async (req, res) => {
                 console.log("Ya existe la addr en la base!");
                 console.log("Deteniendo for");
                 n = addrsUser.length;
-                return res.status(200).json({ Error: "Ya existe esa addr!!" });
+                return res.status(200).json(["Ya existe esa addr!!"]);
             }
         }
 
@@ -130,12 +130,12 @@ export const createAddr = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Ya no puedes agregar más addrs!!");
-                return res.status(500).json({ Error: "Ya no puedes agregar más addrs!!" });
+                return res.status(500).json(["Ya no puedes agregar más addrs!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
         console.log("Error en regisUser().\n", error);
@@ -148,7 +148,7 @@ export const updateAddr = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json([ "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -196,7 +196,7 @@ export const updateAddr = async (req, res) => {
                 console.log("Ya existe la addr en la base!");
                 console.log("Deteniendo for");
                 n = addrsUser.length;
-                return res.status(200).json({ Error: "Ya existe esa addr!!" });
+                return res.status(200).json(["Ya existe esa addr!!"]);
             }
         }
 
@@ -241,7 +241,7 @@ export const updateAddr = async (req, res) => {
 
         if (!updateAddress.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            //return res.status(500).json({ message: "Nada en tu address!" });
+            //return res.status(500).json({ message: "Nada en tu address!"]);
         }
         console.log("Mostrando resultados de update");
         console.log(updateAddress);
@@ -268,7 +268,7 @@ export const updateAddr = async (req, res) => {
 
     } catch (error) {
         console.log("Error en getTarjeta().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };

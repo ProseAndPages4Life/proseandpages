@@ -14,7 +14,7 @@ export const loginClient = async (req, res) => {
             console.log("logged esta en:" + logged);
             console.log("logout esta en:" + logout);
             console.log("Ya estas logueado!!\nTerminando authClient\n");
-            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' });
+            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' ]);
         }
             */
         console.log("Iniciando login!\nCachando JSON:\n");
@@ -34,7 +34,7 @@ export const loginClient = async (req, res) => {
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
             console.log("logout esta en:" + logout);
-            return res.status(404).json({ message: "Usuario inexistente!" });
+            return res.status(404).json(["Usuario inexistente!"]);
         }
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n", resultB);
@@ -48,7 +48,7 @@ export const loginClient = async (req, res) => {
             console.log("FAIL!\nMostrando tiempo actual: \n", TiempoActual[0].now);
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
-            return res.status(400).json({ message: "Credenciales incorrectas!" });
+            return res.status(400).json(["Credenciales incorrectas!"]);
         }
         console.log("Contraseñas coinciden!\n");
 
@@ -84,7 +84,7 @@ export const loginClient = async (req, res) => {
     } catch (error) {
         console.log("Error en regisUser().\n", error);
         console.log("Finalizando funcion de login\nlogged:", logged, " & logout:" + logout);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de login\nlogged:", logged, " & logout:" + logout);
 };
@@ -98,7 +98,7 @@ export const loginAdmin = async (req, res) => {
             console.log("logged esta en:" + logged);
             console.log("logout esta en:" + logout);
             console.log("Ya estas logueado!!\nTerminando authClient\n");
-            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' });
+            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' ]);
         }
             */
         console.log("Iniciando login!\nCachando JSON:\n");
@@ -118,7 +118,7 @@ export const loginAdmin = async (req, res) => {
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
             console.log("logout esta en:" + logout);
-            return res.status(404).json({ message: "Usuario inexistente!" });
+            return res.status(404).json(["Usuario inexistente!"]);
         }
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n", resultB);
@@ -132,7 +132,7 @@ export const loginAdmin = async (req, res) => {
             console.log("FAIL!\nMostrando tiempo actual: \n", TiempoActual[0].now);
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
-            return res.status(400).json({ message: "Credenciales incorrectas!" });
+            return res.status(400).json(["Credenciales incorrectas!"]);
         }
         console.log("Contraseñas coinciden!\n");
 
@@ -168,7 +168,7 @@ export const loginAdmin = async (req, res) => {
     } catch (error) {
         console.log("Error en regisUser().\n", error);
         console.log("Finalizando funcion de login\nlogged:", logged, " & logout:" + logout);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de login\nlogged:", logged, " & logout:" + logout);
 };
@@ -182,7 +182,7 @@ export const loginInv = async (req, res) => {
             console.log("logged esta en:" + logged);
             console.log("logout esta en:" + logout);
             console.log("Ya estas logueado!!\nTerminando authClient\n");
-            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' });
+            return res.status(401).json({ Advertencia: 'Usuario NO autorizado!!' ]);
         }
             */
         console.log("Iniciando login!\nCachando JSON:\n");
@@ -202,7 +202,7 @@ export const loginInv = async (req, res) => {
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
             console.log("logout esta en:" + logout);
-            return res.status(404).json({ message: "Usuario inexistente!" });
+            return res.status(404).json(["Usuario inexistente!"]);
         }
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n", resultB);
@@ -216,7 +216,7 @@ export const loginInv = async (req, res) => {
             console.log("FAIL!\nMostrando tiempo actual: \n", TiempoActual[0].now);
             console.log(logged);
             console.log("Finalizando login!\n logged en:", logged, " & logout:" + logout);
-            return res.status(400).json({ message: "Credenciales incorrectas!" });
+            return res.status(400).json(["Credenciales incorrectas!"]);
         }
         console.log("Contraseñas coinciden!\n");
 
@@ -252,7 +252,7 @@ export const loginInv = async (req, res) => {
     } catch (error) {
         console.log("Error en regisUser().\n", error);
         console.log("Finalizando funcion de login\nlogged:", logged + " & logout:" + logout);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de login\nlogged:", logged + " & logout:" + logout);
 };
@@ -278,11 +278,11 @@ export const logoutUserTest = (req, res) => {
             });
             console.log("Cookie eliminada!");
             //console.log("Finalizando Logout en if\n con logged en " + logged + " & logut" + logout, "y res.cookie: " + res.cookie.Token + "\n");
-            //return res.json({ message: "Salido con éxito!" });
+            //return res.json([ "Salido con éxito!"]);
         }
         else {
             console.log("No estas logueado pero\n con logged en " + logged, "y logout en " + logout, "y res.cookie: " + res.cookie.Token + "\n");
-            return res.json({ message: "Este no es tu sitio para salir!!" });
+            return res.json(["Este no es tu sitio para salir!!"]);
             //return throw new Error("Error en getBooks(). No se pudo realizar la consulta select. Seguramente la tabla no existe.")
         }
 
@@ -294,7 +294,7 @@ export const logoutUserTest = (req, res) => {
     logout = 1;
     req.user = 0;
     console.log("Finalizando logged:" + logged, " & logout:" + logout, "res.cookie:" + res.cookie, " & req.user:" + req.user);
-    return res.json({ message: "Salido con éxito!" });
+    return res.json(["Salido con éxito!"]);
 };
 
 export const logoutUser = (req, res) => {
@@ -315,37 +315,37 @@ export const logoutUser = (req, res) => {
             logged = 0;
             logout = 1;
             */
-            console.log("Eliminando cookie!");
-            res.cookie("Token", "", {
-                expires: new Date(0),
-            });
-            console.log("Cookie eliminada!");
-            //console.log("Finalizando Logout en if\n con logged en " + logged + " & logut" + logout, "y res.cookie: " + res.cookie.Token + "\n");
-            //return res.json({ message: "Salido con éxito!" });
-        /*}
-        else {
-            console.log("No estas logueado pero\n con logged en " + logged, "y logout en " + logout, "y res.cookie: " + res.cookie.Token + "\n");
-            return res.json({ message: "Este no es tu sitio para salir!!" });
-            //return throw new Error("Error en getBooks(). No se pudo realizar la consulta select. Seguramente la tabla no existe.")
-        }
-
-    } catch (error) {
-        return console.log("Dafaq logged:" + logged + "\n", "y logout en " + logout + "\n", error);
-
+    console.log("Eliminando cookie!");
+    res.cookie("Token", "", {
+        expires: new Date(0),
+    });
+    console.log("Cookie eliminada!");
+    //console.log("Finalizando Logout en if\n con logged en " + logged + " & logut" + logout, "y res.cookie: " + res.cookie.Token + "\n");
+    //return res.json([ "Salido con éxito!"]);
+    /*}
+    else {
+        console.log("No estas logueado pero\n con logged en " + logged, "y logout en " + logout, "y res.cookie: " + res.cookie.Token + "\n");
+        return res.json([ "Este no es tu sitio para salir!!"]);
+        //return throw new Error("Error en getBooks(). No se pudo realizar la consulta select. Seguramente la tabla no existe.")
     }
-        */
+
+} catch (error) {
+    return console.log("Dafaq logged:" + logged + "\n", "y logout en " + logout + "\n", error);
+
+}
+    */
     logged = 0;
     logout = 1;
     req.user = 0;
     console.log("Finalizando logged:" + logged, " & logout:" + logout, "res.cookie:" + res.cookie, " & req.user:" + req.user);
-    return res.json({ message: "Salido con éxito!" });
+    return res.json(["Salido con éxito!"]);
 };
 
 export const profileUser = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json([ "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -359,17 +359,17 @@ export const profileUser = async (req, res) => {
         console.log("Consulta con éxito!\n");
         console.log("Resultado: \n");
         console.log(userData[0]);
-        console.log("\n")
+        console.log("\n");
         console.log(userLogin[0]);
-        res.json({userData: userData[0],userLogin: userLogin[0]});
+        res.json({ userData: userData[0], userLogin: userLogin[0] });
 
-        //res.json({ "Mensaje": "Profile!", Usuario });
+        //res.json({ "Mensaje": "Profile!", Usuario ]);
     }
 
     catch (error) {
         console.log("Error en Profile().\n", error);
         return console.log("Terminando...\n");
-        //return res.status(500).json({message: error.message});
+        //return res.status(500).json([ error.message]);
     }
     console.log("Finalizando funcion de profile");
 }
@@ -381,7 +381,7 @@ export const regisUser = async (req,res) => {
         res.send('Registro!')
     } catch (error) {
         console.log("Error en regisUser().\n",error)
-        return res.status(500).json({message: error.message});
+        return res.status(500).json([ error.message]);
     }
         console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
 }
@@ -392,7 +392,7 @@ export const loginClient = async (req,res) => {
         res.send('Login!')
     } catch (error) {
         console.log("Error en loginClient().\n",error)
-        return res.status(500).json({message: error.message});
+        return res.status(500).json([ error.message]);
     }
         console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
 }
@@ -405,7 +405,7 @@ export const loginGen = async  (req,res) => {
         console.log("Tu req.user da:",req.user)
         if(logged) {
             console.log("Ya estas logueado!!\nTerminando authClient\n")
-            return res.status(401).json({Advertencia: 'Usuario NO autorizado!!'});
+            return res.status(401).json({Advertencia: 'Usuario NO autorizado!!']);
         }
         logged = 1
         console.log("Iniciando login!\nCachando JSON:\n")
@@ -422,7 +422,7 @@ export const loginGen = async  (req,res) => {
             {
                 console.log("Usuario inexistente!")
                 console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
-                return res.status(404).json({ message: "Usuario inexistente!"})
+                return res.status(404).json([ "Usuario inexistente!"})
             }
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n",resultB);
@@ -433,7 +433,7 @@ export const loginGen = async  (req,res) => {
         if(!theyMatch) {
             console.log("Credenciales incorrectas!")
             console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
-            return res.status(400).json({message: "Credenciales incorrectas!"});}
+            return res.status(400).json([ "Credenciales incorrectas!"]);}
         console.log("Contraseñas coinciden!\n");
         
         
@@ -467,7 +467,7 @@ export const loginGen = async  (req,res) => {
     } catch (error) {
         console.log("Error en regisUser().\n",error)
         console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
-        return res.status(500).json({message: error.message});
+        return res.status(500).json([ error.message]);
     }
         console.log("Finalizando funcion de login\nlogged:",logged, " & logout:" + logout);
 }

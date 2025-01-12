@@ -6,9 +6,9 @@ export const regisAdmin = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             console.log("Estas logueado!\n");
-            return res.status(404).json({ message: "Estas logueado!" })
+            return res.status(404).json(["Estas logueado!"]);
         }
         //console.log("logueado como: ", Usuario);
         console.log("++++++++++++++++++");
@@ -37,7 +37,7 @@ export const regisAdmin = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
@@ -55,7 +55,7 @@ export const regisAdmin = async (req, res) => {
             console.log("No se registro el usuario!\n");
             console.log("Correo ya existe!\n");
             console.log("Finalizando");
-            return res.status(404).json({ message: "Correo ya existe!!" });
+            return res.status(404).json(["Correo ya existe!!"]);
         }
         console.log("Hasheando password:\n");
         const Hashed = await bcrypt.hash(Contraseña, 10);//Hasheando contraseña
@@ -95,12 +95,12 @@ export const regisAdmin = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
     }
@@ -110,12 +110,12 @@ export const regisAdmin = async (req, res) => {
 export const regisClient = async (req, res) => {
     try {
         const Usuario = await req.user;
-        console.log("usuario")
-        console.log(Usuario)
+        console.log("usuario");
+        console.log(Usuario);
         if (Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             console.log("Estas logueado!\n");
-            return res.status(404).json({ message: "Estas logueado!" })
+            return res.status(404).json(["Estas logueado!"]);
         }
         console.log("++++++++++++++++++");
         console.log("Iniciando registro!\nCachando JSON:\n");
@@ -143,7 +143,7 @@ export const regisClient = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
@@ -157,7 +157,7 @@ export const regisClient = async (req, res) => {
             console.log("No se registro el usuario!\n");
             console.log("Correo ya existe!\n");
             console.log("Finalizando");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         console.log("Hasheando password:\n");
         const Hashed = await bcrypt.hash(Contraseña, 10);//Hasheando contraseña
@@ -197,12 +197,12 @@ export const regisClient = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
     }
@@ -213,12 +213,12 @@ export const regisInv = async (req, res) => {
     try {
 
         const Usuario = await req.user;
-        console.log("usuario")
-        console.log(Usuario)
+        console.log("usuario");
+        console.log(Usuario);
         if (Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             console.log("Estas logueado!\n");
-            return res.status(404).json({ message: "Estas logueado!" })
+            return res.status(404).json(["Estas logueado!"]);
         }
         console.log("++++++++++++++++++");
         console.log("Iniciando registro!\nCachando JSON:\n");
@@ -246,7 +246,7 @@ export const regisInv = async (req, res) => {
             console.log(Email + "=" + checkMail[0].Email + "?");
             if (Email == checkMail[0].Email) {
                 console.log("Correo ya existe!!\nbAntes de meter en db");
-                return res.status(404).json({ message: "Correo ya existe!! Antes de db" });
+                return res.status(404).json(["Correo ya existe!! Antes de db"]);
             }
         }
         console.log("Consulta bazia! Correo no existe!");
@@ -260,7 +260,7 @@ export const regisInv = async (req, res) => {
             console.log("No se registro el usuario!\n");
             console.log("Correo ya existe!\n");
             console.log("Finalizando");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         console.log("Hasheando password:\n");
         const Hashed = await bcrypt.hash(Contraseña, 10);//Hasheando contraseña
@@ -300,12 +300,12 @@ export const regisInv = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en regisUser().\n", error);
                 console.log("Falló funcion registro.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
     }
@@ -317,20 +317,20 @@ export const updatePass = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
 
         console.log('Actualizando libro');
         console.log("JSON Recibido: " + req.body);
-    console.log("Extrayedno contraseña del JSON\n")
-        const {Contraseña } = req.body;
-        console.log("Contraseña:")
-        console.log(Contraseña)
+        console.log("Extrayedno contraseña del JSON\n");
+        const { Contraseña } = req.body;
+        console.log("Contraseña:");
+        console.log(Contraseña);
         console.log("Hasheando password:\n");
         const Hashed = await bcrypt.hash(Contraseña, 10);//Hasheando contraseña
-        console.log("Hashed: "+Hashed)
+        console.log("Hashed: " + Hashed);
         const resultado = await pool.query("UPDATE Login SET Contraseña=? WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
             Hashed,
@@ -339,7 +339,7 @@ export const updatePass = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("UPDATE Login SET Actualizacion=now() WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -354,7 +354,7 @@ export const updatePass = async (req, res) => {
         res.status(200).json("Actualizada con éxito!");
     } catch (error) {
         console.log("Error en updatePass().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -363,7 +363,7 @@ export const updateMail = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -378,7 +378,7 @@ export const updateMail = async (req, res) => {
         ]);
         if (resultado[0].affectedRows == 0) {
             console.log("Usuario no existe!!\n");
-            return res.status(404).json({ message: "Usuario no existe!!" });
+            return res.status(404).json(["Usuario no existe!!"]);
         }
         const resultado2 = await pool.query("UPDATE Login SET Actualizacion=now() WHERE id= ?;", [
             //const resultado = await pool.query("UPDATE Libros SET Titulo="Titulo" WHERE id=1;", [
@@ -393,7 +393,7 @@ export const updateMail = async (req, res) => {
         res.status(200).json("Actualizada con éxito!");
     } catch (error) {
         console.log("Error en updateMail().\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
 };
 
@@ -433,7 +433,7 @@ export const regisGlobal = async (req,res) => {
         })
     } catch (error) {
         console.log("Error en regisUser().\n",error)
-        return res.status(500).json({message: error.message});
+        return res.status(500).json({message: error.message]);
     }
         console.log("Finalizando funcion de registro")
 }

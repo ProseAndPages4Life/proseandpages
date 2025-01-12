@@ -8,7 +8,7 @@ export const addCarrito = async (req, res) => {
 
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -34,7 +34,7 @@ export const addCarrito = async (req, res) => {
 
         if (!resultCantidad1.length) {
             console.log("No existe ese libro!");
-            return res.status(500).json({ message: "No existe ese libro!!" });
+            return res.status(500).json(["No existe ese libro!!"]);
         }
 
         let Stock = resultCantidad1[0].Stock;
@@ -44,63 +44,63 @@ export const addCarrito = async (req, res) => {
         console.log(Usuario.id);
         console.log("Libro:");
         console.log(Libro1);
-        console.log("Cantidad1:")
-        console.log(Cantidad1)
+        console.log("Cantidad1:");
+        console.log(Cantidad1);
 
-        if(Stock==0){
-            console.log("No hay stock de ese libro!")
-            //return res.status(409).json({ message: "No hay stock de ese libro!!!" });
-            return res.status(200).json({ message: "No hay stock de ese libro!!!" });
+        if (Stock == 0) {
+            console.log("No hay stock de ese libro!");
+            //return res.status(409).json([ "No hay stock de ese libro!!!" ]);
+            return res.status(200).json(["No hay stock de ese libro!!!"]);
         }
 
         //Agrega codigo para qeu cada vez que se agregue al carrito el mismo libro,
         //se sume a los qe ya tenia del mismo ibro
-        console.log("Checando si ya existe el libro en el carrito")
+        console.log("Checando si ya existe el libro en el carrito");
         const [stockCarrito] = await pool.query(
             //"INSERT IGNORE INTO Login(Email, Contraseña) VALUES (?,?)",
             "SELECT * FROM Carrito WHERE (usuario=?) & (libro_id=?)",
             [Usuario.id, Libro1]);
-        
+
         console.log("stockCarrito:");
         console.log(stockCarrito);
-        
+
         //if ((stockCarrito!=undefined)||(stockCarrito!=[]) || (!stockCarrito)) {
-        if (stockCarrito.length!=0) {
+        if (stockCarrito.length != 0) {
             console.log("Resultado stockcarrito: ");
             console.log(stockCarrito.cantidad);
             const CarritoActual = stockCarrito[0].cantidad;
             console.log("Ya hay de ese libro en el carrito!");
-            //return res.status(500).json({ message: "No existe ese libro!!" });
+            //return res.status(500).json([ "No existe ese libro!!" ]);
 
-            
+
             console.log("Y stock en carro es:", CarritoActual);
             console.log("Ya tiene libros de ese tipo, checando si esta agregando más del stock actual");
             console.log("Intendando agregar:(Cantidad1)", Cantidad1);
 
             console.log("Checando si se intenta elminiar mas libros de los que hay en el carro");
             console.log("Se intuye que quiere elminar el producto del carrito");
-            console.log("Cantidad "+Cantidad1+" + "+CarritoActual+" <= 0?")
+            console.log("Cantidad " + Cantidad1 + " + " + CarritoActual + " <= 0?");
             if ((Cantidad1 + CarritoActual) <= 0) {
                 //El usuario intento eliminar más de los libros que tiene en el carro. 
                 //En lugar de colocar en 0, se borra el registro
                 console.log("Se intentan eliminar más de los que hay!");
                 console.log("Se borra el registro");
-                console.log("Mostrando id del libro a elminar:")
-                console.log(stockCarrito[0].Id)
+                console.log("Mostrando id del libro a elminar:");
+                console.log(stockCarrito[0].Id);
                 const [delteProduct] = await pool.query(
                     "DELETE FROM Carrito WHERE id=?",
                     //"SELECT * FROM Libros WHERE id=?",
                     [(stockCarrito[0].Id)]);
-                    console.log(delteProduct)
-                if (delteProduct==[]) {
+                console.log(delteProduct);
+                if (delteProduct == []) {
                     console.log("No existe ese campo en el carrito!");
-                    return res.status(500).json({ message: "No campo en el carro!!" });
+                    return res.status(500).json(["No campo en el carro!!"]);
                 }
                 console.log("delteProduct");
                 console.log(delteProduct);
 
 
-                return res.status(401).json({ message: "Se elimino el producto del carrito!" });
+                return res.status(401).json(["Se elimino el producto del carrito!"]);
             }
 
 
@@ -130,7 +130,7 @@ export const addCarrito = async (req, res) => {
                 }
                 console.log("Mostrando resultados de actualizacion:");
                 console.log(updateCarritoMod);
-                return res.status(401).json({ message: "Tienes la cantidad maxima de libros! Ya no hay stock!" });
+                return res.status(401).json(["Tienes la cantidad maxima de libros! Ya no hay stock!"]);
             } else {
                 console.log("Cantidad a agregar:", Cantidad1, "+", CarritoActual, "=", add);
                 console.log("Cantidad a actualizar:");
@@ -152,13 +152,13 @@ export const addCarrito = async (req, res) => {
                 console.log(Cantidad1, ">", Stock);
                 console.log("la cantidad es mayor al stock");
                 console.log("No puedes agregar lobris sde lor que hay")
-            return res.status(401).json({ message: "Tienes la cantidad maxima de libros de los que hay!xd", });
+            return res.status(401).json([ "Tienes la cantidad maxima de libros de los que hay!xd", ]);
             */
         } else {
 
-            if(Cantidad1<=0){
-                console.log("No es posible agregar valores negativos o 0's")
-                return res.status(409).json({ message: "No es posible agregar valores negativos o nulos!!" });
+            if (Cantidad1 <= 0) {
+                console.log("No es posible agregar valores negativos o 0's");
+                return res.status(409).json(["No es posible agregar valores negativos o nulos!!"]);
             }
 
             console.log("Agregando al carrito");
@@ -169,7 +169,7 @@ export const addCarrito = async (req, res) => {
             console.log(resultCarrito);
             if (resultCarrito.length == 0) {
                 console.log("Error al agregar al carrito!");
-                return res.status(500).json({ message: "Error al agregar al carrito!!" });
+                return res.status(500).json(["Error al agregar al carrito!!"]);
 
             }
         }
@@ -178,7 +178,7 @@ export const addCarrito = async (req, res) => {
         );
         if (consultCarrito.length == 0) {
             console.log("Error al leer el carrito!");
-            return res.status(500).json({ message: "Error al leer el carro!!" });
+            return res.status(500).json(["Error al leer el carro!!"]);
         }
         /*
         console.log("Creando acces Token:\n");
@@ -201,12 +201,12 @@ export const addCarrito = async (req, res) => {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 console.log("Correo ya existe!!");
-                return res.status(500).json({ Error: "Correo ya existe!!" });
+                return res.status(500).json(["Correo ya existe!!"]);
                 break;
             default:
                 console.log("Error en createCarrito().\n", error);
                 console.log("Falló funcion createCarrito.");
-                return res.status(500).json({ Error: error.message });
+                return res.status(500).json([error.message]);
                 break;
         }
         console.log("Error en createCarrito().\n", error);
@@ -220,7 +220,7 @@ export const getCarrito = async (req, res) => {
     try {
         const Usuario = await req.user;
         if (!Usuario) {
-            //return res.status(500).json({message: "No se pudo logear"});
+            //return res.status(500).json({message: "No se pudo logear"]);
             return console.log("No se pudo loguear!\n");
         }
         console.log("logueado como: ", Usuario);
@@ -231,7 +231,7 @@ export const getCarrito = async (req, res) => {
             [Usuario.id]);
         if (!stockCarrito.length) {
             console.log("Algo sucedio en el chequeo de la tabla. Seguramente no existe!");
-            return res.status(500).json({ message: "Nada en tu carrito!" });
+            return res.status(500).json(["Nada en tu carrito!"]);
         } else {
             console.log("Mostrando resultados de consulta");
             console.log(stockCarrito);
@@ -256,7 +256,7 @@ export const getCarrito = async (req, res) => {
                 console.log(nombresLibros[0].Categoria);
                 let Titulo = nombresLibros[0].Titulo;
                 let Categoria = nombresLibros[0].Categoria;
-                //return res.status(500).json({ messsage: "Nada en tu carrito!" });
+                //return res.status(500).json({ messsage: "Nada en tu carrito!" ]);
                 /*jsonGen[n]=
                 '{'+
                     'Id:'+(stockCarrito[n].Id)+','+
@@ -290,7 +290,7 @@ export const getCarrito = async (req, res) => {
             //res.json(stockCarrito);
             console.log("Mandando al navegador!");
             res.json(jsonEntrega);
-            
+
             /*
             const string1 = '{"result":true,';
             const string2 = ' "count":42}';
@@ -348,7 +348,7 @@ export const getCarrito = async (req, res) => {
 
     } catch (error) {
         console.log("Error en getCarrito().\nNo se pudo realizar la consulta select. Seguramente la tabla no existe.\n", error);
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json([error.message]);
     }
     console.log("Finalizando funcion de consulta");
 };

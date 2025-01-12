@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [isAutenticado, setIsAutenticado] = useState(false);
-    const [errors, setErrors] = useState(null);
+    const [errorsLogin, setErrors] = useState([]);
 
 
     const loginUser = async (user) => {
@@ -27,8 +27,15 @@ export const AuthProvider = ({ children }) => {
             setUser(res.data);
             setIsAutenticado(true);
         } catch (error) {
+            console.log("error:")
             console.log(error)
+            console.log("error.response")
+            console.log(error.response)
+            console.log("error.response.data")
             console.log(error.response.data)
+            console.log("error.response.data.message")
+            console.log(error.response.data.message)
+
             setErrors(error.response.data)
             
         }
@@ -37,7 +44,9 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             loginUser,
             user,
-            isAutenticado
+            isAutenticado,
+            errorsLogin
+
         }}>
             {children}
         </AuthContext.Provider>
