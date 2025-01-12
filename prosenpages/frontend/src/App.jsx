@@ -5,7 +5,7 @@ import Home from "./pages/landings/Home";
 
 import { NavBooksGeneral, NavBooksAdminFocused } from "./pages/books/navBooksAdmin";
 
-import Login from "./pages/login/Login";
+import {LoginAdmin, LoginClient, LoginInv} from "./pages/login/Login";
 import Logout from "./pages/login/Logout";
 import Register from "./pages/login/Register";
 
@@ -39,10 +39,15 @@ function App() {
           <Link to="profile" className="navBar"> Profile</Link>
           <Link to="register" className="navBar"> Register </Link>
           <Link to="login" className="navBar"> Login </Link>
+          
+          <Link to="/admin/login" className="navBar"> Login_Admin </Link>
+          <Link to="/inv/login" className="navBar"> Login_Inv </Link>
+
           <Link to="/admin/books" className="navBar"> Libros_Admin </Link>
           <Link to="/admin/users" className="navBar"> Usuarios_Admin </Link>
           <Link to="/admin/edit" className="navBar"> Editar_Admin </Link>
           <Link to="/admin/create" className="navBar"> Crear_Admin </Link>
+
           <Link to="/carrito" className="navBar"> Carrito </Link>
           <Link to="logout" className="navBar"> Logout </Link>
         </nav>
@@ -163,7 +168,9 @@ function App() {
               <Route path="profile" element={<Search />} />
               {/* /admin/register/ */}
               <Route path="register" element={<Register />} />
-              <Route path="login" element={<Login />} />
+              {/* /admin/login/ */}
+              <Route path="login" element={<LoginAdmin />} />
+              {/* /admin/logout/ */}
               <Route path="logout" element={<Logout />} />
             </Route>
             {/*Fin de admin*/}
@@ -180,7 +187,7 @@ function App() {
               <Route path="pass" element={<Search />} />
               <Route path="email" element={<Search />} />
               <Route path="register" element={<Register />} />
-              <Route path="login" element={<Login />} />
+              <Route path="login" element={<LoginClient />} />
               <Route path="logout" element={<Logout />} />
             </Route>
             {/*Fin de cliente*/}
@@ -195,7 +202,7 @@ function App() {
               <Route path="pass" element={<Search />} />
               <Route path="email" element={<Search />} />
               <Route path="register" element={<Search />} />
-              <Route path="login" element={<Login />} />
+              <Route path="login" element={<LoginInv />} />
               <Route path="logout" element={<Logout />} />
             </Route>
             {/*Fin de inventario*/}

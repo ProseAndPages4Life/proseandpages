@@ -5,6 +5,37 @@ let logged = 0;
 let logout = 1;
 let userI = 0;
 
+function chekUser(user){
+    switch(user){
+        case "Administrador":
+
+            break;
+        case "Cliente":
+            break;
+        case "Inventario":
+            break;
+    }
+}
+
+/*
+const checkTypeUser = async (id) => {
+    try {
+        console.log("ID recibido!:", id);
+        
+        
+        const [isAuth] = await pool.query("SELECT * FROM Usuarios WHERE id=?",
+            [id]
+        );
+        console.log("Mostrando resultado de consulta:");
+        console.log(isAuth);
+    } catch (error) {
+        console.log("Algo sucedio:");
+        console.log(error);
+        //return res.status(400).json(["No estas autorizado para usar este login"])
+    }
+};
+*/
+
 export const loginClient = async (req, res) => {
     try {
         /*
@@ -39,6 +70,26 @@ export const loginClient = async (req, res) => {
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n", resultB);
         //console.log("Resultado de resultB\n",resultB[0].Contraseña);
+
+
+        console.log("Checando si es inventario!");
+        let id=resultB[0].id
+        console.log("Id de usuario: ", id);
+        //checkTypeUser(id);
+        const [isAuth] = await pool.query("SELECT * FROM Usuarios WHERE id=?",
+            [id]
+        );
+        console.log("Mostrando resultado de consulta:");
+        console.log(isAuth);
+        let TipoUser=isAuth[0].Tipo;
+        console.log("Tipo")
+        console.log(TipoUser)
+        if(TipoUser=="Cliente"){
+            console.log("Sitio correcto para entrar")
+        }else{
+            console.log("Este no es tu sitio!")
+            return res.status(400).json(["Sitio incorrecto para entrar!"]);
+        }
 
         console.log("Realizando comparacion de contraseñas!\n");
         const theyMatch = await bcrypt.compare(Contraseña, resultB[0].Contraseña);
@@ -124,6 +175,26 @@ export const loginAdmin = async (req, res) => {
         console.log("Reultado general:\n", resultB);
         //console.log("Resultado de resultB\n",resultB[0].Contraseña);
 
+
+        console.log("Checando si es inventario!");
+        let id=resultB[0].id
+        console.log("Id de usuario: ", id);
+        //checkTypeUser(id);
+        const [isAuth] = await pool.query("SELECT * FROM Usuarios WHERE id=?",
+            [id]
+        );
+        console.log("Mostrando resultado de consulta:");
+        console.log(isAuth);
+        let TipoUser=isAuth[0].Tipo;
+        console.log("Tipo")
+        console.log(TipoUser)
+        if(TipoUser=="Administrador"){
+            console.log("Sitio correcto para entrar")
+        }else{
+            console.log("Este no es tu sitio!")
+            return res.status(400).json(["Sitio incorrecto para entrar!"]);
+        }
+
         console.log("Realizando comparacion de contraseñas!\n");
         const theyMatch = await bcrypt.compare(Contraseña, resultB[0].Contraseña);
         if (!theyMatch) {
@@ -207,6 +278,27 @@ export const loginInv = async (req, res) => {
         console.log("Consulta con éxito!\n");
         console.log("Reultado general:\n", resultB);
         //console.log("Resultado de resultB\n",resultB[0].Contraseña);
+
+
+        console.log("Checando si es inventario!");
+        let id=resultB[0].id
+        console.log("Id de usuario: ", id);
+        //checkTypeUser(id);
+        const [isAuth] = await pool.query("SELECT * FROM Usuarios WHERE id=?",
+            [id]
+        );
+        console.log("Mostrando resultado de consulta:");
+        console.log(isAuth);
+        let TipoUser=isAuth[0].Tipo;
+        console.log("Tipo")
+        console.log(TipoUser)
+        if(TipoUser=="Inventario"){
+            console.log("Sitio correcto para entrar")
+        }else{
+            console.log("Este no es tu sitio!")
+            return res.status(400).json(["Sitio incorrecto para entrar!"]);
+        }
+
 
         console.log("Realizando comparacion de contraseñas!\n");
         const theyMatch = await bcrypt.compare(Contraseña, resultB[0].Contraseña);

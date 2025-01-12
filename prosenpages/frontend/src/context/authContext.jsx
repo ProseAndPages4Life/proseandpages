@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginAdminReq, regisClientReq } from "../api/auth";
+import { loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
 
 
 export const AuthContext = createContext();
@@ -20,8 +20,9 @@ export const AuthProvider = ({ children }) => {
     const [errorsBack, setErrors] = useState([]);
 
 
-    const loginUser = async (user) => {
+    const loginAdmin = async (user) => {
         try {
+
             console.log(user);
             const res = await loginAdminReq(user);
             console.log(res.data);
@@ -56,6 +57,45 @@ export const AuthProvider = ({ children }) => {
             }
 
 
+        }
+    };
+
+    const loginClient = async (user) => {
+        try {
+
+            console.log(user);
+            const res = await loginClientReq(user);
+            console.log(res.data);
+            setUser(res.data);
+            setIsAutenticado(true);
+        } catch (error) {
+
+            if (Array.isArray(error.response.data)) {
+                setErrors(error.response.data);
+            } else {
+
+                setErrors(error.response.data.Error);
+            }
+
+
+        }
+    };
+
+    const loginInv = async (user) => {
+        try {
+            console.log(user);
+            const res = await loginInvReq(user);
+            console.log(res.data);
+            setUser(res.data);
+            setIsAutenticado(true);
+        } catch (error) {
+            if (Array.isArray(error.response.data)) {
+
+                setErrors(error.response.data);
+            } else {
+
+                setErrors(error.response.data.Error);
+            }
         }
     };
 
@@ -110,7 +150,9 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            loginUser,
+            loginAdmin,
+            loginClient,
+            loginInv,
             regisClient,
             user,
             isAutenticado,
