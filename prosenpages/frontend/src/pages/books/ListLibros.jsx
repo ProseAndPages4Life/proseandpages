@@ -29,7 +29,7 @@ function ListProducts() {
       console.log(booksList);
       alreadyGot = 1;
     } else {
-      alreadyGot = 1;
+      alreadyGot = 0;
     }
   });
 

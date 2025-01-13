@@ -166,14 +166,14 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const getaBook = async (bookList) => {
+    const getaBook = async (id) => {
         console.log("Iniciando getBooks");
         try {
             console.log("Dentro de try");
-            console.log("Mostrando booksList")
-            console.log(bookList)
+            console.log("Mostrando a bookList")
+            console.log(id)
             //booksList = [];
-            const res = await getClientaBookReq()
+            const res = await getClientaBookReq(id)
             console.log("Viendo solicitud!");
             console.log(res);
             console.log("Viendo res.data");

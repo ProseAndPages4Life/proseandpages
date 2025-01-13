@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ipBack } from '../../src/api/config.js';
 
+
 //import { idBook } from '../pages/books/ProductDisplay.jsx';
 
 
@@ -23,9 +24,7 @@ export const createBookReq = user => axios.post(`${ipBack}/admin/books`, user);
 export const createUserReq = user => axios.post(`${ipBack}/admin/login`, user);
 
 export const getAdminBookReq = user =>axios.get(`${ipBack}/admin/books`)
-export const getClientaBookReq = user =>axios.get(`${ipBack}/books/`,{
-    id: 1,
-})
+export const getClientaBookReq = (id) => axios.get(`${ipBack}/books/${id}`)
 export const getClientBookReq = user =>axios.get(`${ipBack}/books/`)
 /* 
 export const getAdminBookReq = axios.get(`${ipBack}/admin/books/`).then(function (response) {
