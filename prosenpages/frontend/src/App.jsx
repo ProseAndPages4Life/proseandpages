@@ -11,7 +11,7 @@ import Register from "./pages/login/Register";
 
 import Search from "./pages/books/Search";
 import AddProduct from "./pages/books/AddProduct";
-import ProductDisplay from "./pages/books/ProductDisplay";
+import {ProductDisplay} from "./pages/books/ProductDisplay";
 import ListLibros from "./pages/books/ListLibros";
 import { NavUsersAdminFocused, NavUsersGeneral } from "./pages/users/navUsers";
 import { NavEditUser } from "./pages/edit/navEditUser";

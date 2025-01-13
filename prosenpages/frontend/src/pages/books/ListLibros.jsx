@@ -19,8 +19,6 @@ function ListProducts() {
   }); 
   */
 
-
-
   useEffect(() => {
     if (alreadyGot == 0) {
       console.log("Jalando libros");

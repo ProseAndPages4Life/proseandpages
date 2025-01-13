@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAdminBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
+import { getAdminBookReq, getClientaBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
 
 
 export const AuthContext = createContext();
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
     const [errorsBack, setErrors] = useState([]);
 
     const [booksList, setBooks] = useState([]);
+    const [bookList, setaBook] = useState([]);
 
 
     const loginAdmin = async (user) => {
@@ -142,7 +143,7 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-    const getBooks = async () => {
+    const getBooks = async (booksList) => {
         console.log("Iniciando getBooks");
         try {
             console.log("Dentro de try");
@@ -159,6 +160,29 @@ export const AuthProvider = ({ children }) => {
             setBooks(res.data);
             console.log("Viendo booksList var");
             console.log(booksList);
+        } catch (error) {
+            console.log("Viendo error en getBooks");
+            console.log(error);
+        }
+    };
+
+    const getaBook = async (bookList) => {
+        console.log("Iniciando getBooks");
+        try {
+            console.log("Dentro de try");
+            console.log("Mostrando booksList")
+            console.log(bookList)
+            //booksList = [];
+            const res = await getClientaBookReq()
+            console.log("Viendo solicitud!");
+            console.log(res);
+            console.log("Viendo res.data");
+            console.log(res.data);
+            console.log("Es array?")
+            console.log(Array.isArray(res.data));
+            setaBook(res.data);
+            console.log("Viendo booksList var");
+            console.log(bookList);
         } catch (error) {
             console.log("Viendo error en getBooks");
             console.log(error);
@@ -186,6 +210,7 @@ export const AuthProvider = ({ children }) => {
             regisClient,
             //getBooks
             getBooks,
+            getaBook,
             user,
             isAutenAdmin,
             isAutenClient,
@@ -193,6 +218,7 @@ export const AuthProvider = ({ children }) => {
             isRegistrado,
             //getBooks
             booksList,
+            bookList,
             errorsBack
 
         }}>
