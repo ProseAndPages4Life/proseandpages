@@ -23,10 +23,17 @@ import { createTarjeta, getTarjeta, updateTarjeta } from "../controllers/tarjeta
 import { cardSchema } from "../schemas/tarjeta_schema.js";
 import { createAddr, getAddr, updateAddr } from "../controllers/addr_controller.js";
 import { addrSchema } from "../schemas/addr_schema.js";
+import { doPing, verifyTokenAdmin, verifyTokenClient, verifyTokenInv } from "../controllers/index_controllers.js";
 
 
 //Generando enrutador
 const router = Router();
+
+router.get("/auth/verify/admin",verifyTokenAdmin);
+
+router.get('/auth/verify/client', verifyTokenClient);
+router.get('/auth/verify/inv', verifyTokenInv);
+
 
 //Registrar
 router.post("/register", validarSchema(regisSchema), regisClient);

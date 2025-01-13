@@ -16,7 +16,8 @@ export const app = express();
 export const origenFront = "/"+siteFront +":"+portFront+"/";
 
 var corsOptions = {
-    origin: /localhost:5173/
+    origin: /localhost:5173/,
+    credentials: true 
     //,"methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
     //,"methods": "GET,PUT,POST,DELETE"
     //,methods: "GET , DELETE"

@@ -41,7 +41,7 @@ function ListProducts() {
       {booksList.map((product) => {
         let source = `${product.Portada}`;
         return (
-          <div className="column">{/* column */}
+          <div className="column" key={product.id}>{/* column */}
             <div
               key={product.id} className="card"/* libroSolo */
               onClick={() => {

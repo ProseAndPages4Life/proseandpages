@@ -1,10 +1,15 @@
 import { Router } from "express";
-import { doPing } from "../controllers/index_controllers.js";
+import { doPing, verifyTokenAdmin, verifyTokenClient, verifyTokenInv } from "../controllers/index_controllers.js";
 const router = Router();
 
 //Manejador de peticiones de express
 //Creando peticion
 router.get("/ping",doPing);
+
+
+//verificar tokens
+//'/auth/verify'
+
 
 //Anterior
 /*

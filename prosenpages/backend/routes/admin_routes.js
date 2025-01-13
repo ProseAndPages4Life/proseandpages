@@ -30,7 +30,7 @@ router.post("/register",
     //authAdmin,
     validarSchema(regisSchema), regisAdmin);
 
-    //Login
+//Login
 router.post("/login", validarSchema(loginSchema), loginAdmin);
 
 //Logout
