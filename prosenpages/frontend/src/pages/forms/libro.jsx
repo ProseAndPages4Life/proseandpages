@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { createBookReq } from "../../api/auth";
+import { useAuth } from "../../context/authContext";
 
 function BookForm() {
 
@@ -8,18 +8,28 @@ function BookForm() {
         errors
     } } = useForm();
 
+    const { createBook, errorsBack } = useAuth();
 
     const onSubmit = handleSubmit(async (values) => {
         console.log(values);
-        const res = await createBookReq(values);
+        const res = await createBook(values);
         console.log(res);
     }
     );
 
     return (
 
-        
+
         <div className="form">
+
+            <div className="text"><h1>Login!</h1></div>
+            {
+                errorsBack.map((error, i) => (
+                    <div key={error} className="text">
+                        {error}
+                    </div>
+                ))
+            }
             <form onSubmit={onSubmit}>
                 <label htmlFor="Titulo">Titulo: </label>
                 <input type="text" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Titulo", { required: true })} /><br /><br />
