@@ -18,7 +18,7 @@ export function BookForm() {
         console.log(datos);
         console.log("Iniciando res");
         createBook(datos);
-        navigate("/");
+        //navigate("/");
     }
     );
 

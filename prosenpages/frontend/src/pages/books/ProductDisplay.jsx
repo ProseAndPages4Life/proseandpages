@@ -19,7 +19,7 @@ export function ProductDisplay() {
   //  const { idBook } = useParams();
   const navigate = useNavigate();
 
-  const { getaBook, bookList, pushCarrito, errorsBack  } = useAuth();
+  const { getaBook, bookList, pushCarrito, errorsBack } = useAuth();
 
   const { id } = useParams();
   /* 
@@ -43,14 +43,21 @@ export function ProductDisplay() {
       alreadyGot = 0;
     }
   });
-
-  const onSubmit = handleSubmit(async (user) => {
+  
+  const onSubmit = handleSubmit(async (cantidad) => {
     console.log("Mostrando datos ingresados!");
-    console.log(user);
-    console.log("Agregando libro");
-    user.Libro = id;
+    console.log("Cantidad")
+    console.log(cantidad);
+    console.log("id libro");
+    console.log(id);
+
     console.log("Mostrando actualizada");
-    pushCarrito(user);
+    let jsonDeliver= JSON.parse({
+      "Cantidad": cantidad,
+      "Libro": id
+    });
+    console.log(jsonDeliver)
+    pushCarrito(libro);
   }
   );
 
@@ -66,8 +73,16 @@ export function ProductDisplay() {
       */}
 
       <h1>STOCK: {bookList.Stock}</h1>
-
-      
+      <form onSubmit={onSubmit}>
+        <label htmlFor="Cantidad">Cantidad </label>
+        <input type="number" min="0" max={bookList.Stock} placeholder={bookList.Stock} {...register("Cantidad", { required: true })} /><br /><br />
+        {
+          errors.Cantidad && (
+            <p className="text">Cantidad es requerido!</p>
+          )
+        }
+        <p><button type="submit" className="botonRegistro">Agregar a carrito!</button></p>
+      </form>
 
       <div className="card1">
 
@@ -86,6 +101,8 @@ export function ProductDisplay() {
         </h4>
 
         <img src={source} alt={source} />
+
+
       </div>
     </div>
 
@@ -103,7 +120,7 @@ export function CarritoDisplay() {
   //  const { idBook } = useParams();
   const navigate = useNavigate();
 
-  const {  getCarrito, errorsBack  } = useAuth();
+  const { getCarrito, errorsBack } = useAuth();
 
   const { id } = useParams();
   /* 
@@ -129,7 +146,7 @@ export function CarritoDisplay() {
 
   const onSubmit = handleSubmit(async (data) => {
     console.log("Mostrando datos ingresados!");
-    console.log("Creando orden!")
+    console.log("Creando orden!");
     console.log(data);
     console.log("Agregando libro");
     user.Libro = id;
@@ -148,7 +165,7 @@ export function CarritoDisplay() {
           </div>
         ))
       */}
-      
+
       <form onSubmit={onSubmit}>
         <label htmlFor="Tarjeta">Tarjeta </label>
         <input type="number" min="0" max="2" placeholder="1" {...register("Tarjeta", { required: true })} /><br /><br />
@@ -157,7 +174,7 @@ export function CarritoDisplay() {
             <p className="text">Tarjeta es requerido!</p>
           )
         }
-        
+
         <label htmlFor="Domicilio">Domicilio </label>
         <input type="number" min="0" max="2" placeholder="1" {...register("Domicilio", { required: true })} /><br /><br />
         {

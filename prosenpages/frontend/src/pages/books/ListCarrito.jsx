@@ -67,7 +67,7 @@ export function ListCarrito() {
           )
         }
 
-        <button type="submit" className="botonRegistro">Agrega al carrito</button>
+        <button type="submit" className="botonRegistro">Realizar orden!</button>
       </form>
       {/* <img src="/src/img/portadas/img1.png"/> */}
 
@@ -81,18 +81,10 @@ export function ListCarrito() {
                 navigate(`${product.Libro_id}`);
               }}
             >
-              {/* {
-        "Id": 38,
-        "Libro_id": 4,
-        "Libro": "Titulo",
-        "Categoria": "Fantasía",
-        "Cantidad": 2,
-        "Fecha": "2025-01-13T17:10:52.000Z"
-    } */}
 
               <h3>ID: {product.Id}</h3>
-              <h3>ID Libro: {product.Libro_id}</h3> 
-              <h3>Titulo: {product.Libro}</h3> 
+              <h3>ID Libro: {product.Libro_id}</h3>
+              <h3>Titulo: {product.Libro}</h3>
               <h4><p>Categoria: {product.Categoria}</p>{/* {"a"} */}</h4>
               <h4><p>Cantidad: {product.Cantidad}</p>{/* {"a"} */}</h4>
               <h4><p>Fecha: {product.Fecha}</p>{/* {"a"} */}</h4>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ProductsData } from "../../ProductsData";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { useForm } from "react-hook-form";
 let alreadyGot = 0;
 
 
@@ -10,6 +11,10 @@ export function ListLibros() {
   const navigate = useNavigate();
 
   const { getBooks, booksList } = useAuth();
+
+  const { register, handleSubmit, formState: {
+    errors
+  } } = useForm();
 
   /*
    useEffect(() => {
@@ -35,6 +40,11 @@ export function ListLibros() {
     }
   });
 
+  const onSubmit = handleSubmit(async (user) => {
+    console.log("Valores recibidos")
+    console.log(user)
+  });
+
 
   return (
     <div className="row">{/* listOfLibros */}
@@ -50,7 +60,7 @@ export function ListLibros() {
                 navigate(`${product.id}`);
               }}
             >
-              <h1>{product.Titulo}</h1> 
+              <h1>{product.Titulo}</h1>
               <h2><p>{product.Autor}</p>{/* {"a"} */}</h2>
               <img src={source} />
               <h1>Precio: $ {product.Precio}</h1>
