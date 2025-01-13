@@ -48,8 +48,10 @@ function ListProducts() {
                 navigate(`${product.id}`);
               }}
             >
-              <h1>{product.Titulo}</h1> <p>{product.Autor}</p>{"a"}
+              <h1>{product.Titulo}</h1> 
+              <h2><p>{product.Autor}</p>{/* {"a"} */}</h2>
               <img src={source} />
+              <h1>Precio: $ {product.Precio}</h1>
             </div>
           </div>
         );

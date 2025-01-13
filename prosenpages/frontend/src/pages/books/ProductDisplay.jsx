@@ -38,20 +38,21 @@ export function ProductDisplay() {
   return (
 
     <div className="column">
-      <div className="card">
+      <div className="card1">
 
-        TItulo:<h1> {bookList.Titulo}</h1>{" "}
-        Autor:<p>{bookList.Autor}</p>
-        Formato:<p>{bookList.Formato}</p>
-        Editorial:<p>{bookList.Editorial}</p>
-        Año:<p>{bookList.Año}</p>
-        Idioma:<p>{bookList.Idioma}</p>
-        Número de páginas:<p>{bookList.NumPag}</p>
-        Encuadernación:<p>{bookList.Encudernacion}</p>
-        ISBN:<p>{bookList.ISBN}</p>
-        Categoría:<p>{bookList.Categoria}</p>
-        Precio:<p>${bookList.Precio}</p>
-        Portada:<p>{bookList.Portada}</p>
+        <h1> {bookList.Titulo}</h1>{" "}
+        <h4>
+          <p>Autor: {bookList.Autor}</p>
+          <p>Formato: {bookList.Formato}</p>
+          <p>Editorial: {bookList.Editorial}</p>
+          <p>Año: {bookList.Año}</p>
+          <p>Idioma: {bookList.Idioma}</p>
+          <p>Número de páginas: {bookList.NumPag}</p>
+          <p>Encuadernación: {bookList.Encudernacion}</p>
+          <p>ISBN: {bookList.ISBN}</p>
+          <p>Categoría: {bookList.Categoria}</p>
+          <p>Precio: ${bookList.Precio}</p>
+        </h4>
 
         <img src={source} alt={source} />
       </div>
@@ -64,6 +65,6 @@ export function ProductDisplay() {
 /* <div className="listOflibros">
       <div className="libroDisplay">
         <h1>{ProductsData[idBook - 1].name}</h1>{" "}
-        :<p>{ProductsData[idBook - 1].description}</p>{" "}
+        :{ProductsData[idBook - 1].description}</p>{" "}
       </div>
     </div> */
