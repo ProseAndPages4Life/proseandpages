@@ -25,11 +25,14 @@ export const loginInvReq = user => axios1.post(`inv/login`, user);
 export const createBookReq = user => axios1.post(`admin/books`, user);
 export const createUserReq = user => axios1.post(`admin/login`, user);
 
+export const updateBook = (id,data) => axios1.put(`/admin/books/${id}`,data)
+
 export const getAdminBookReq = user => axios1.get(`admin/books`);
 export const getClientaBookReq = (id) => axios1.get(`/books/${id}`);
 export const getClientBookReq = user => axios1.get(`books/`);
 
 export const createCarrito = form => axios1.post(`carrito`, form);
+export const getCarritoReq = user => axios1.get(`carrito`);
 
 export const loginReq = user => axios1.post(`admin/login`, user);
 /* 

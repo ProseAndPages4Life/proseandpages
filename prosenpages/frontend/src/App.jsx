@@ -12,7 +12,7 @@ import Register from "./pages/login/Register";
 import Search from "./pages/books/Search";
 import AddProduct from "./pages/books/AddProduct";
 import { ProductDisplay } from "./pages/books/ProductDisplay";
-import ListLibros from "./pages/books/ListLibros";
+import {ListLibros} from "./pages/books/ListLibros";
 import { NavUsersAdminFocused, NavUsersGeneral } from "./pages/users/navUsers";
 import { NavEditUser } from "./pages/edit/navEditUser";
 
@@ -27,10 +27,11 @@ import { CreateLanding } from "./pages/landings/Create";
 import { BacktoBooks } from "./pages/edit/backtoBooks";
 import { DelFoward, DelLanding } from "./pages/landings/Delete";
 import { NavDelete } from "./pages/delete/navDelete";
-import BookForm from "./pages/forms/libro";
+import { BookForm } from "./pages/forms/libro";
 import { AuthProvider } from "./context/authContext";
 //Rutas protegidas
 import { ProtectedAdmin, ProtectedClient, ProtectedInv } from "./pages/protected/ProtectedRoutes";
+import { ListCarrito } from "./pages/books/ListCarrito";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Link to="profile" className="navBar"> Profile</Link>
           <Link to="register" className="navBar"> Register </Link>
           <Link to="login" className="navBar"> Login </Link>
+          <Link to="books" className="navBar"> Libros </Link>
           <Link to="/admin/login" className="navBar"> Login_Admin </Link>
           <Link to="/inv/login" className="navBar"> Login_Inv </Link>
           <Link to="/admin/books" className="navBar"> Libros_Admin </Link>
@@ -76,6 +78,9 @@ function App() {
             <Route path="/inv/logout" element={<Navigate to='/logout' replace />} />
 
             {/*Fin de logins*/}
+
+            {/*Inicio de register*/}
+            <Route path="register" element={<Register />} />
 
 
             {/* ADMINISTRADOR */}
@@ -204,20 +209,23 @@ function App() {
 
 
             {/* CLIENTE */}
-            {/*<Route element={<ProtectedClient />}>*/}
-            <Route path="/">
-              <Route path="profile" element={<Search />} />
-              <Route path="books" element={<ListLibros />}>
-                <Route path=":id" element={<ProductDisplay />} />
-                <Route path="search" element={<Search />} />
+            {/* <Route element={<ProtectedClient />}> */}
+              <Route path="/">
+                <Route path="profile" element={<Search />} />
+                <Route path="books">
+                <Route path="" element={<ListLibros />} />
+                  <Route path=":id">
+                    <Route path="" element={<ProductDisplay />} />
+                  </Route>
+                  <Route path="search" element={<Search />} />
+                </Route>
+                <Route path="carrito" element={<ListCarrito />} />
+                <Route path="pass" element={<Search />} />
+                <Route path="email" element={<Search />} />
+
+                <Route path="logout" element={<Logout />} />
               </Route>
-              <Route path="carrito" element={<ListLibros />} />
-              <Route path="pass" element={<Search />} />
-              <Route path="email" element={<Search />} />
-              <Route path="register" element={<Register />} />
-              <Route path="logout" element={<Logout />} />
-            </Route>
-            {/*</Route>*/}
+            {/* </Route> */}
 
             {/*Fin de cliente*/}
 

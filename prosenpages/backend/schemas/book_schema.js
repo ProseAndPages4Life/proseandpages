@@ -80,7 +80,7 @@ includes("No Aplica",{code: "",
 
     Categoria: z.string({
         required_error: "Se requiere una categoria!"
-    }).max(13, { message: "categoria: Deben ser menos de 13 caracteres!" })/*.
+    }).max(16, { message: "categoria: Deben ser menos de 13 caracteres!" })/*.
     includes("Fantasía",{code: "",
         message: "'Fantasía', 'Ciencia Ficción', 'Romance', 'Suspenso', 'Poesía', 'Infantiles'"}).
     includes("Ciencia Ficción",{code: "",

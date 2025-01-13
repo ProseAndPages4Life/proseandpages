@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createCarrito, getAdminBookReq, getClientaBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq, verifyTokenAdminReq, verifyTokenClientReq, verifyTokenInvReq } from "../api/auth";
+import { createBookReq, createCarrito, getAdminBookReq, getCarritoReq, getClientaBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq, verifyTokenAdminReq, verifyTokenClientReq, verifyTokenInvReq } from "../api/auth";
 import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
 
     const [booksList, setBooks] = useState([]);
     const [bookList, setaBook] = useState([]);
+    const [carritoList, setCarritoList] = useState([]);
 
     const [formCarrito, setCarrito] = useState([]);
 
@@ -207,6 +208,109 @@ export const AuthProvider = ({ children }) => {
             console.log("Viendo error en pushCarrito");
             console.log(error);
 
+
+        }
+    };
+
+
+    const createBook = async (user) =>{
+        try {
+            console.log("Iniciando con datos")
+            const res = await createBookReq(user);
+            console.log("Imprimiendo respuesta!");
+            console.log(res);
+            
+        } catch (error) {
+            console.log("Viendo error!");
+            console.log(error);
+
+            console.log("error.response");
+            console.log(error.response);
+            console.log("error.response.data");
+            console.log(error.response.data);
+            console.log("error.response.data.message");
+            console.log(error.response.data.message);
+
+            if (Array.isArray(error.response.data)) {
+
+                console.log("Es array");
+                console.log("Creo que solo hubo un error");
+
+                setErrors(error.response.data);
+            } else {
+
+                console.log("No es array");
+                console.log("Es objeto al parecer");
+                console.log("Seguro viene del backend");
+                console.log("error.response.data.Error");
+                console.log(error.response.data.Error);
+
+                setErrors(error.response.data.Error);
+            }
+        }
+    };
+
+    const updateBook = async (user) =>{
+        try {
+            console.log("Iniciando con datos")
+            const res = await createBookReq(user);
+            console.log("Imprimiendo respuesta!");
+            console.log(res);
+            
+        } catch (error) {
+            console.log("Viendo error!");
+            console.log(error);
+
+            console.log("error.response");
+            console.log(error.response);
+            console.log("error.response.data");
+            console.log(error.response.data);
+            console.log("error.response.data.message");
+            console.log(error.response.data.message);
+
+            if (Array.isArray(error.response.data)) {
+
+                console.log("Es array");
+                console.log("Creo que solo hubo un error");
+
+                setErrors(error.response.data);
+            } else {
+
+                console.log("No es array");
+                console.log("Es objeto al parecer");
+                console.log("Seguro viene del backend");
+                console.log("error.response.data.Error");
+                console.log(error.response.data.Error);
+
+                setErrors(error.response.data.Error);
+            }
+        }
+    };
+
+
+
+    //get carrito
+    
+    const getCarrito = async (booksList) => {
+        console.log("Iniciando getBooks");
+        try {
+            /* console.log("Dentro de try");
+            console.log("Mostrando booksList");
+            console.log(booksList); */
+            //booksList = [];
+            const res = await getCarritoReq();
+            /* console.log("Viendo solicitud!");
+            console.log(res);
+            console.log("Viendo res.data");
+            console.log(res.data);
+            console.log("Es array?");
+            console.log(Array.isArray(res.data)); */
+            setCarritoList(res.data);
+            /* console.log("Viendo booksList var");
+            console.log(booksList); */
+        } catch (error) {
+            /* console.log("Viendo error en getBooks");
+            console.log(error); */
         }
     };
 
@@ -336,7 +440,6 @@ export const AuthProvider = ({ children }) => {
             }
         }
 
-
         async function checkValid() {
             let stopped = 0;
             await checkAdmin();
@@ -388,6 +491,10 @@ export const AuthProvider = ({ children }) => {
             getBooks,
             getaBook,
             pushCarrito,
+            //put
+            createBook,
+            updateBook,
+            getCarrito,
             user,
             isAutenAdmin,
             isAutenClient,
@@ -396,6 +503,7 @@ export const AuthProvider = ({ children }) => {
             //getBooks
             booksList,
             bookList,
+            carritoList,
             errorsBack
 
         }}>

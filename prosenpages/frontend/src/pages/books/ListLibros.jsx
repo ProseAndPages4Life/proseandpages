@@ -3,7 +3,9 @@ import { ProductsData } from "../../ProductsData";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 let alreadyGot = 0;
-function ListProducts() {
+
+
+export function ListLibros() {
 
   const navigate = useNavigate();
 
@@ -74,4 +76,8 @@ function ListProducts() {
   );
 }
 
-export default ListProducts;
+
+
+
+
+
