@@ -2,32 +2,39 @@ import React, { Children, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductsData } from "../../ProductsData";
 import { useAuth } from "../../context/authContext";
+import { useForm } from "react-hook-form";
 
 let source = 0;
 let alreadyGot = 0;
 
 let idExportlet = {};
 export function ProductDisplay() {
+
+  const { register, handleSubmit, formState: {
+    errors
+  } } = useForm();
+
   //  const { idBook } = useParams();
   const navigate = useNavigate();
 
-  const { getaBook, bookList } = useAuth();
+  const { getaBook, bookList, pushCarrito, errorsBack  } = useAuth();
+
   const { id } = useParams();
-  idExportlet = { id };
+  /* 
   console.log("idExportlet");
   console.log(idExportlet);
   console.log("idExportlet.id");
-  console.log(idExportlet.id);
+  console.log(idExportlet.id); */
 
 
   useEffect(() => {
     if (alreadyGot == 0) {
-      console.log("Jalando libros");
+      /* console.log("Jalando libros");
       console.log("bookList antes");
-      console.log(bookList);
+      console.log(bookList); */
       getaBook(id);
-      console.log("bookList despues");
-      console.log(bookList);
+      /* console.log("bookList despues");
+      console.log(bookList); */
       source = bookList.Portada;
       alreadyGot = 1;
     } else {
@@ -35,9 +42,41 @@ export function ProductDisplay() {
     }
   });
 
+  const onSubmit = handleSubmit(async (user) => {
+    console.log("Mostrando datos ingresados!");
+    console.log(user);
+    console.log("Agregando libro");
+    user.Libro = id;
+    console.log("Mostrando actualizada");
+    pushCarrito(user);
+  }
+  );
+
   return (
 
     <div className="column">
+      {/*
+        errorsBack.map((error, i) => (
+          <div key={error} className="text">
+            {error}
+          </div>
+        ))
+      */}
+
+      <h1>STOCK: {bookList.Stock}</h1>
+
+      <form onSubmit={onSubmit}>
+        <label htmlFor="Cantidad">Cantidad </label>
+        <input type="number" min="0" max={bookList.Stock} placeholder="1" {...register("Cantidad", { required: true })} /><br /><br />
+        {
+          errors.Cantidad && (
+            <p className="text">Cantidad es requerido!</p>
+          )
+        }
+
+        <button type="submit" className="botonRegistro">Agrega al carrito</button>
+      </form>
+
       <div className="card1">
 
         <h1> {bookList.Titulo}</h1>{" "}

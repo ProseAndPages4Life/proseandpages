@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 import { ipBack } from '../../src/api/config.js';
 
 
@@ -23,9 +23,11 @@ export const loginInvReq = user => axios.post(`${ipBack}/inv/login`, user);
 export const createBookReq = user => axios.post(`${ipBack}/admin/books`, user);
 export const createUserReq = user => axios.post(`${ipBack}/admin/login`, user);
 
-export const getAdminBookReq = user =>axios.get(`${ipBack}/admin/books`)
-export const getClientaBookReq = (id) => axios.get(`${ipBack}/books/${id}`)
-export const getClientBookReq = user =>axios.get(`${ipBack}/books/`)
+export const getAdminBookReq = user => axios.get(`${ipBack}/admin/books`);
+export const getClientaBookReq = (id) => axios.get(`${ipBack}/books/${id}`);
+export const getClientBookReq = user => axios.get(`${ipBack}/books/`);
+
+export const createCarrito = form => axios.post(`${ipBack}/carrito`, form);
 /* 
 export const getAdminBookReq = axios.get(`${ipBack}/admin/books/`).then(function (response) {
     console.log(response);

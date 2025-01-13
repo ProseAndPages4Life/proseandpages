@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAdminBookReq, getClientaBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
+import { createCarrito, getAdminBookReq, getClientaBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
 
 
 export const AuthContext = createContext();
@@ -23,6 +23,8 @@ export const AuthProvider = ({ children }) => {
 
     const [booksList, setBooks] = useState([]);
     const [bookList, setaBook] = useState([]);
+
+    const [formCarrito,setCarrito] = useState([])
 
 
     const loginAdmin = async (user) => {
@@ -147,15 +149,15 @@ export const AuthProvider = ({ children }) => {
         console.log("Iniciando getBooks");
         try {
             console.log("Dentro de try");
-            console.log("Mostrando booksList")
-            console.log(booksList)
+            console.log("Mostrando booksList");
+            console.log(booksList);
             //booksList = [];
             const res = await getClientBookReq();
             console.log("Viendo solicitud!");
             console.log(res);
             console.log("Viendo res.data");
             console.log(res.data);
-            console.log("Es array?")
+            console.log("Es array?");
             console.log(Array.isArray(res.data));
             setBooks(res.data);
             console.log("Viendo booksList var");
@@ -167,28 +169,46 @@ export const AuthProvider = ({ children }) => {
     };
 
     const getaBook = async (id) => {
-        console.log("Iniciando getBooks");
+        /* console.log("Iniciando getBooks"); */
         try {
-            console.log("Dentro de try");
-            console.log("Mostrando a bookList")
-            console.log(id)
+            /* console.log("Dentro de try");
+            console.log("Mostrando a bookList");
+            console.log(id); */
             //booksList = [];
-            const res = await getClientaBookReq(id)
-            console.log("Viendo solicitud!");
+            const res = await getClientaBookReq(id);
+            /* console.log("Viendo solicitud!");
             console.log(res);
             console.log("Viendo res.data");
             console.log(res.data);
-            console.log("Es array?")
-            console.log(Array.isArray(res.data));
+            console.log("Es array?");
+            console.log(Array.isArray(res.data)); */
             setaBook(res.data);
-            console.log("Viendo booksList var");
-            console.log(bookList);
+            /* console.log("Viendo booksList var");
+            console.log(bookList); */
         } catch (error) {
             console.log("Viendo error en getBooks");
             console.log(error);
         }
     };
 
+    const pushCarrito = async (formCarrito) => {
+        console.log("Iniciando pushCarrito");
+        
+        try {
+            console.log("Dentro de try");
+            console.log("Mostrando a form");
+            console.log(formCarrito);
+            console.log("Realizando solicitud")
+            const res = await createCarrito(formCarrito);
+            console.log("Mostrando respuesta!")
+            console.log(res)
+            setCarrito(formCarrito)
+        } catch (error) {
+            console.log("Viendo error en pushCarrito");
+            console.log(error);
+           
+        }
+    };
 
 
     //Limpiando mensajes de error despues de 5 segundos
@@ -211,6 +231,7 @@ export const AuthProvider = ({ children }) => {
             //getBooks
             getBooks,
             getaBook,
+            pushCarrito,
             user,
             isAutenAdmin,
             isAutenClient,
