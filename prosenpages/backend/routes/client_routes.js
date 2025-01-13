@@ -44,9 +44,9 @@ router.get("/profile", authClient, profileUser);
 router.get("/", authClient, getLandingClient);
 //GET
 //Libros
-router.get('/books', authClient, getBooks);//Solicitar libros
+router.get('/books', getBooks);//Solicitar libros
 //Libros
-router.get('/books/:id', authClient, getaBook);//Solicitar libros
+router.get('/books/:id', getaBook);//Solicitar libros
 
 //Carrito
 router.get("/carrito",authClient, getCarrito)//Añadir al carrito

@@ -20,4 +20,11 @@ export const ProductsData = [
     price: 300,
     image: "https://via.placeholder.com/150",
   },
+  {
+    id: 4,
+    name: "Product 4",
+    description: "Description 4",
+    price: 300,
+    image: "https://via.placeholder.com/150",
+  },
 ];

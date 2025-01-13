@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
+import { getAdminBookReq, getClientBookReq, loginAdminReq, loginClientReq, loginInvReq, regisClientReq } from "../api/auth";
 
 
 export const AuthContext = createContext();
@@ -20,6 +20,8 @@ export const AuthProvider = ({ children }) => {
     const [isAutenInv, setIsAutenInv] = useState(false);
     const [isRegistrado, setIsRegistrado] = useState(false);
     const [errorsBack, setErrors] = useState([]);
+
+    const [booksList, setBooks] = useState([]);
 
 
     const loginAdmin = async (user) => {
@@ -140,6 +142,32 @@ export const AuthProvider = ({ children }) => {
 
     };
 
+    const getBooks = async () => {
+        console.log("Iniciando getBooks");
+        try {
+            console.log("Dentro de try");
+            console.log("Mostrando booksList")
+            console.log(booksList)
+            //booksList = [];
+            const res = await getClientBookReq();
+            console.log("Viendo solicitud!");
+            console.log(res);
+            console.log("Viendo res.data");
+            console.log(res.data);
+            console.log("Es array?")
+            console.log(Array.isArray(res.data));
+            setBooks(res.data);
+            console.log("Viendo booksList var");
+            console.log(booksList);
+        } catch (error) {
+            console.log("Viendo error en getBooks");
+            console.log(error);
+        }
+    };
+
+
+
+    //Limpiando mensajes de error despues de 5 segundos
     useEffect(() => {
         if (errorsBack.length > 0) {
             const timer = setTimeout(() => {
@@ -156,11 +184,15 @@ export const AuthProvider = ({ children }) => {
             loginClient,
             loginInv,
             regisClient,
+            //getBooks
+            getBooks,
             user,
             isAutenAdmin,
             isAutenClient,
             isAutenInv,
             isRegistrado,
+            //getBooks
+            booksList,
             errorsBack
 
         }}>

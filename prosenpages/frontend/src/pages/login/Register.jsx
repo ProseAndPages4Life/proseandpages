@@ -21,12 +21,13 @@ function Register() {
     const { regisClient, errorsBack, isRegistrado,
         // isAutenticado
     } = useAuth();
+
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isRegistrado) navigate("/login");
     }, [isRegistrado]);
-
+    
 
     const onSubmit = handleSubmit(async (datos) => {
         console.log("Leyendo datos ingresados en la consola!");
@@ -65,7 +66,7 @@ function Register() {
                 <label htmlFor="Nacim">Nacimiento: </label>
                 <input type="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md" {...register("Nacim", { required: true })} /><br /><br />
                 {
-                    errors.Nacimiento && (
+                    errors.Nacim && (
                         <p className="text">Nacimiento es requerido!</p>
                     )
                 }
