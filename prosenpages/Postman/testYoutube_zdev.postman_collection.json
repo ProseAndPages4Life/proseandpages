@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "a06ef01c-d2de-495f-9013-609fb2b5e27d",
+		"name": "testYoutube_zdev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40620629"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4999/dev/ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4999/dev/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"dev",
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

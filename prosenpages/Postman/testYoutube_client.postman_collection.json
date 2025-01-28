@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "f468cb0a-e510-4e6a-bb81-5fd99307d31b",
+		"name": "testYoutube_client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40620629"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4999/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/books/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/pass",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/pass",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"pass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"cliente1@test1.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4999/email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/card",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"POST MAN POST\",\r\n    \"Tarjeta\": \"4696850116690\",\r\n    \"Vencimiento\": \"12-24\",\r\n    \"CVV\": \"999\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/card/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"POST MAN POST\",\r\n    \"Tarjeta\": \"4696850116690\",\r\n    \"Vencimiento\": \"12-24\",\r\n    \"CVV\": \"999\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/card/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"card",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/addr",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Libro\": \"2\",\r\n    \"Cantidad\": \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/addr",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"addr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/addr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Libro\": \"2\",\r\n    \"Cantidad\": \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/addr",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"addr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/account/addr/2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Calle\": \"Dulces11\",\r\n    \"Numero\": \"69420\",\r\n    \"Colonia\": \"Manzanas\",\r\n    \"Estado\": \"Frutales\",\r\n    \"CP\": \"12345\",\r\n    \"Refer\": \"Casa con forma de manzana\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/account/addr/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"account",
+						"addr",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Nombre1\",\r\n    \"Apellido\": \"Apelldo1\",\r\n    \"Nacim\": \"2009-7-04\",\r\n    \"Email\": \"cliente1@test1.com\",\r\n    \"Contraseña\": \"pass1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/carrito",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Libro\": \"1\",\r\n    \"Cantidad\": \"20\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/carrito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"carrito"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Cantidad\": \"2\",\r\n    \"Libro\": \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/carrito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"carrito"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"Tarjeta\": \"1\",\r\n        \"Domicilio\": \"2\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"cliente1@test1.com\",\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:4999/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

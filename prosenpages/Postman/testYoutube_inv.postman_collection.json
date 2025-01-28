@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "9c37c69f-cf9e-49cc-8097-5e9ad77f1c20",
+		"name": "testYoutube_inv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40620629"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4999/inv/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\":    \"Titulo3\",\r\n    \"Autor\":     \"Autor1\",\r\n    \"Formato\":   \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\":       \"1990\",\r\n    \"Idioma\":    \"Idioma1\",\r\n    \"NumPag\":   \"420\",\r\n    \"Encudernacion\":    \"No Aplica\",\r\n    \"ISBN\":      \"69420\",\r\n    \"Categoria\":   \"Fantasía\",\r\n    \"Precio\":    \"2069\",\r\n    \"Portada\":   \"./src/img/portadas/img99.png\",\r\n    \"Stock\":     \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/books/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Titulo\": \"TituloPostman69420\",\r\n    \"Autor\": \"Autor1\",\r\n    \"Formato\": \"Digital\",\r\n    \"Editorial\": \"Editorial1\",\r\n    \"Año\": \"1990\",\r\n    \"Idioma\": \"Idioma1\",\r\n    \"NumPag\": \"420\",\r\n    \"Encudernacion\": \"No aplica\",\r\n    \"ISBN\": \"1234567890123\",\r\n    \"Categoria\": \"Romance\",\r\n    \"Precio\": \"2069\",\r\n    \"Portada\": \"./src/img/portadas/img99.png\",\r\n    \"Stock\": \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/admin/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"admin",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Nombre1\",\r\n    \"Apellido\": \"Apelldo1\",\r\n    \"Nacim\": \"2009-7-04\",\r\n    \"Email\": \"inv1@test1.com\",\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"inv1@test1.com\",\r\n    \"Contraseña\": \"PasS11!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4999/inv/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"cliente1@test1.com\",\r\n    \"Contraseña\": \"pass1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4999/inv/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4999",
+					"path": [
+						"inv",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
